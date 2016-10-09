@@ -9,6 +9,7 @@
 ****************************************************************/
 package cs245_projectv10.view;
 
+import cs245_projectv10.Globals;
 import cs245_projectv10.controller.Keyboard;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -27,6 +28,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import static javax.swing.SwingConstants.CENTER;
 import javax.swing.Timer;
 
 
@@ -48,6 +50,7 @@ public class GameView extends JPanel {
     private JPanel headerPanel;
     private JPanel manPanel;
     private JPanel wordPanel;
+    private JPanel endGamePanel;
     private JLabel scoreLabel;
     private JTextArea manBuffer;
     private JLabel headerLabel;
@@ -81,6 +84,32 @@ public class GameView extends JPanel {
         drawNoose(wrongGuesses);
     }
     
+    public void endHangman(String fullWord, int wrongGuesses, String message) {
+        endGamePanel = new JPanel();
+        Font font = new Font("MONOSPACED",Font.PLAIN,27);
+        JLabel endGameLabel = new JLabel(message);
+        
+        headerPanel.remove(controller.getSkipButton());
+        headerPanel.add(controller.getNextButton());
+        remove(keyboardPanel);
+
+        
+        if (wrongGuesses < Globals.MAX_TRYS) {
+            endGameLabel.setForeground(Color.GREEN);
+        } else {
+            endGameLabel.setForeground(Color.RED);
+        }
+                
+        endGameLabel.setFont(font);
+        endGameLabel.setHorizontalTextPosition(CENTER);
+
+        fillMissedGuesses(fullWord);
+        endGamePanel.add(endGameLabel);
+        add(endGamePanel,BorderLayout.SOUTH);
+
+        validate();
+        repaint();
+    }
 
     /* --- Helper Methods --- */
     
@@ -145,7 +174,7 @@ public class GameView extends JPanel {
         keyboardPanel.setBorder(BorderFactory.createLineBorder(Color.black));
         keyboardPanel.setLayout(new GridLayout(2,13,5,5));
         for (int ii = 0; ii < controller.getSize(); ++ii ) {
-            keyboardPanel.add(controller.keyList.get(ii));
+            keyboardPanel.add(controller.getKeyboardList().get(ii));
         }
     }
     
@@ -190,6 +219,23 @@ public class GameView extends JPanel {
             currentWordList.add(new JLabel(currentWord.charAt(ii)+ " "));
             wordPanel.add(currentWordList.get(ii));
             currentWordList.get(ii).setText(currentWord.charAt(ii) + " ");
+        }
+    }
+    
+    private void fillMissedGuesses(String fullWord) {
+        wordPanel.removeAll();
+
+        for (int ii = 0; ii < currentWord.length(); ++ii) {
+            if (currentWord.charAt(ii) != fullWord.charAt(ii)) {
+                currentWordList.add(new JLabel());
+                currentWordList.get(ii).setText(fullWord.charAt(ii)+ " ");
+                currentWordList.get(ii).setForeground(Color.RED);
+                wordPanel.add(currentWordList.get(ii));
+            } else {
+                currentWordList.add(new JLabel());
+                currentWordList.get(ii).setText(currentWord.charAt(ii) + " ");
+                wordPanel.add(currentWordList.get(ii));
+            }
         }
     }
 }

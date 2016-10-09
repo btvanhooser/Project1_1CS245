@@ -10,6 +10,7 @@
 ****************************************************************/
 package cs245_projectv10.model;
 
+import cs245_projectv10.Globals;
 import cs245_projectv10.controller.Keyboard;
 import cs245_projectv10.screens.EndScreen;
 import cs245_projectv10.screens.GameScreen;
@@ -20,11 +21,7 @@ import javax.swing.JButton;
 public class Hangman {
 
     /*Constants*/
-    private final int    MAX_SCORE        = 100;
-    private final int    MAX_TRYS         = 6;
-    private final int    POINTS_TO_DEDUCT = 10;
-    private final String WORD_LIST []     = {"ABSTRACT","CEMETERY","NURSE",
-                                             "PHARMACY","CLIMBING"};
+
     
     /*Variables*/
     GameScreen             game;
@@ -43,20 +40,20 @@ public class Hangman {
         addActionListenersToControllerButtons();
         
         // Set initial game state
-        score        = MAX_SCORE;
+        score        = Globals.MAX_SCORE;
         wrongGuesses = 0;
-        guessWord    = getRandomWord();
+        guessWord    = getRandomWord(Globals.WORD_LIST);
         wordState    = new StringBuilder(guessWord.length());
         
         for(int i = 0; i < guessWord.length(); i++){wordState = wordState.append("_");}
-        
         view.update(wordState.toString(),wrongGuesses,score);
         
     }
     
     /*Returns a random word from our word list*/
-    private String getRandomWord(){
-        return WORD_LIST[(int)(Math.random()*WORD_LIST.length)];
+    private String getRandomWord(String [] wordSet){
+        Math.random();
+        return wordSet[(int)(Math.random()*wordSet.length)];
     }
     
     /*Updates game state based upon letter guessed*/
@@ -71,9 +68,9 @@ public class Hangman {
             }
         }
         else{                               // Otherwise decrement the score
-            if(wrongGuesses < MAX_TRYS){
+            if(wrongGuesses < Globals.MAX_TRYS){
                 wrongGuesses++;
-                score -= POINTS_TO_DEDUCT;
+                score -= Globals.POINTS_TO_DEDUCT;
             }
         }
         
@@ -83,14 +80,18 @@ public class Hangman {
     
     /*Ends game and goes to "End Game" screen*/
     private void endGame(int score){
+//        view.endHangman();
         EndScreen end = new EndScreen(score, game);
         game.dispose();
     }
     
     /*Checks for a win or loss*/
     private void checkWin(){
-        if(wrongGuesses >= MAX_TRYS || !wordState.toString().contains("_")){
-            endGame(score);
+        if(wrongGuesses >= Globals.MAX_TRYS){
+            view.endHangman(guessWord, wrongGuesses, getRandomWord(Globals.LOSE_LIST));
+//            endGame(score);
+        } else if(!wordState.toString().contains("_")) {
+            view.endHangman(guessWord, wrongGuesses, getRandomWord(Globals.WIN_LIST));
         }
     }
     
@@ -102,8 +103,12 @@ public class Hangman {
             endGame(score);
         });
         
+        controller.getNextButton().addActionListener((ActionEvent e) ->{
+            endGame(score);
+        });
+        
         // Add action listeners to virtual keyboard
-        for (JButton button : controller.keyList) {
+        for (JButton button : controller.getKeyboardList()) {
             button.addActionListener((ActionEvent e) -> {
                 update(button.getText());
                 button.setEnabled(false);

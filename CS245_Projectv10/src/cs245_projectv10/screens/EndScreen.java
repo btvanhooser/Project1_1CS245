@@ -10,7 +10,6 @@
 package cs245_projectv10.screens;
 
 import cs245_projectv10.Globals;
-import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -45,7 +44,6 @@ public class EndScreen  extends JFrame {
         addActionListenersToEndButton();
     }
        
-    
     
     /* --- Helper Methods --- */
     
