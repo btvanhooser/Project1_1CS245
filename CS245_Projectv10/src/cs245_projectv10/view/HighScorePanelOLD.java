@@ -12,31 +12,31 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 /***************************************************************
-* file: HighScorePanel.java
-* author: Brian Van Hooser
-* class: CS 245 - Intro to GUI
-*
-* assignment: Project 1 (Hangman)
-* date last modified: 10/6/2016
-*
-* purpose: This is the Panel that provides the list of high scores.
+* file: HighScorePanelOLD.java
+ author: Brian Van Hooser
+ class: CS 245 - Intro to GUI
+
+ assignment: Project 1 (Hangman)
+ date last modified: 10/6/2016
+
+ purpose: This is the Panel that provides the list of high scores.
 * This list is currently static, but will later be adjusted for
 * actual data.
 *
 ****************************************************************/
 
-public class HighScorePanel extends JPanel implements ActionListener {
+public class HighScorePanelOLD extends JPanel implements ActionListener {
     
     private ButtonListener btnListener;
     /**
      * Creates new form HighScorePanel
      */
     
-    // Method: HighScorePanel
+    // Method: HighScorePanelOLD
     // Purpose: This is the constructor that calls the generated code 
     // for the Panel content, and then adds a listener to the button.
     
-    public HighScorePanel() {
+    public HighScorePanelOLD() {
         initComponents();
         backButton.addActionListener(this);
     }

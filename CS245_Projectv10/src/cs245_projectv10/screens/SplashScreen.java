@@ -43,7 +43,7 @@ public class SplashScreen extends JFrame {
     private void setMainPanelAttributes(){
         
         mainPanel = new JPanel();
-        mainPanel.setLayout(new GridLayout(5,1));
+        mainPanel.setLayout(new GridLayout(5,1,2,2));
         
         ImageIcon projectNameIcon = new ImageIcon("src//cs245_projectv10//resources//projectname.png");
         JLabel projectLabel       = new JLabel();

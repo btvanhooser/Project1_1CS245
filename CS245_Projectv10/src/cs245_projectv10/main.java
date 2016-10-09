@@ -14,13 +14,15 @@
 package cs245_projectv10;
 
 import cs245_projectv10.screens.GameScreen;
-import cs245_projectv10.screens.MainFrame;
 import cs245_projectv10.screens.SplashScreen;
+import cs245_projectv10.view.MainMenu;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
 public class main {
+    
+    static MainMenu mainMenu;
     // Method: main
     // Purpose: This is the starting point for this project.
     
@@ -28,11 +30,11 @@ public class main {
         SwingUtilities.invokeLater(() -> {
             
             SplashScreen splash = new SplashScreen();
-            System.out.println("Bounds: " + splash.getBounds());
+            //System.out.println("Bounds: " + splash.getBounds());
             
-            Timer timer = new Timer(3000, (ActionEvent e) -> {
+            Timer timer = new Timer(1000, (ActionEvent e) -> {
                 splash.dispose();
-                new MainFrame();
+                mainMenu = new MainMenu();
             });
             timer.setRepeats(false);
             timer.start();
@@ -41,5 +43,4 @@ public class main {
 //            GameScreen game = new GameScreen();
         });
     }
-    
 }
