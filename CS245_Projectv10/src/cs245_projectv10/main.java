@@ -26,13 +26,15 @@ public class main {
     
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
+            
             SplashScreen splash = new SplashScreen();
-            Timer timer = new Timer(100, (ActionEvent e) -> {
+            System.out.println("Bounds: " + splash.getBounds());
+            
+            Timer timer = new Timer(3000, (ActionEvent e) -> {
                 splash.dispose();
                 new MainFrame();
             });
             timer.setRepeats(false);
-            timer.setInitialDelay(3000);
             timer.start();
             
             // Uncomment to use for debugging Hangman game
