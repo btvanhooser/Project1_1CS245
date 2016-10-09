@@ -13,6 +13,7 @@
 ****************************************************************/
 package cs245_projectv10;
 
+import cs245_projectv10.screens.GameScreen;
 import cs245_projectv10.screens.MainFrame;
 import cs245_projectv10.screens.SplashScreen;
 import java.awt.event.ActionEvent;
@@ -33,6 +34,9 @@ public class main {
             timer.setRepeats(false);
             timer.setInitialDelay(3000);
             timer.start();
+            
+            // Uncomment to use for debugging Hangman game
+//            GameScreen game = new GameScreen();
         });
     }
     

@@ -9,6 +9,8 @@
 ****************************************************************/
 package cs245_projectv10.screens;
 
+import cs245_projectv10.Globals;
+import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -24,6 +26,10 @@ import javax.swing.JPanel;
 public class EndScreen  extends JFrame {
     /* --- Variables --- */
     JPanel   endGamePanel;
+    JPanel   headerPanel;
+    JPanel   footerPanel;
+    JPanel   manPanel;
+    JPanel   wordPanel;
     JLabel   scoreLabel;
     JButton  endGameButton;
     
@@ -38,8 +44,19 @@ public class EndScreen  extends JFrame {
         endGamePanel.add(new JLabel());
         addActionListenersToEndButton();
     }
+       
+    
     
     /* --- Helper Methods --- */
+    
+    // Set the visual properties of the EndScreen
+    private void setFrameAttributes() {
+        add(endGamePanel);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(600,400);
+        setLocationRelativeTo(null);
+        setVisible(true);
+    }    
     
     // Create Endgame Panel ontop of the Frame
     private void createEndGamePanel(int score) {
@@ -49,16 +66,9 @@ public class EndScreen  extends JFrame {
         Font font = new Font("MONOSPACED",Font.PLAIN,24);
         scoreLabel.setFont(font);
         endGameButton = new JButton("End");
+        endGameButton.setBackground(Globals.BUTTON_COLOR);
     }
     
-    // Set the visual properties of the EndScreen
-    private void setFrameAttributes() {
-        add(endGamePanel);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(600,400);
-        setLocationRelativeTo(null);
-        setVisible(true);
-    }
     
     // Self Descriptive function name. No need for comment.
     private void addActionListenersToEndButton() {

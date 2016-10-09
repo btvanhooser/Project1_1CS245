@@ -10,6 +10,8 @@
 ****************************************************************/
 package cs245_projectv10.controller;
 
+import cs245_projectv10.Globals;
+import java.awt.Color;
 import java.awt.Insets;
 import java.util.LinkedList;
 import javax.swing.JButton;
@@ -48,10 +50,12 @@ public class Keyboard {
     // Create new buttons to be given action listeners later
     private void populateControllerButtons() {
         skipButton = new JButton("Skip");
+        skipButton.setBackground(Globals.BUTTON_COLOR);
         skipButton.setMargin(new Insets(1,1,1,1));
         for (int ii = FIRST_LETTER; ii <= LAST_LETTER; ++ii) {
             keyList.add(new JButton(Character.toString((char)ii)));
             keyList.get(ii - FIRST_LETTER).setMargin(new Insets(1,1,1,1));
+            keyList.get(ii- FIRST_LETTER).setBackground(Globals.BUTTON_COLOR);
         }
     }
 }
