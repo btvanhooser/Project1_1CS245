@@ -11,6 +11,7 @@ package cs245_projectv10.screens;
 
 import cs245_projectv10.Globals;
 import cs245_projectv10.view.MainMenu;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -25,13 +26,9 @@ import javax.swing.JPanel;
  */
 public class EndScreen  extends JFrame {
     /* --- Variables --- */
-    JPanel   endGamePanel;
-    JPanel   headerPanel;
-    JPanel   footerPanel;
-    JPanel   manPanel;
-    JPanel   wordPanel;
-    JLabel   scoreLabel;
-    JButton  endGameButton;
+    private JPanel   endGamePanel;
+    private JLabel   scoreLabel;
+    private JButton  endGameButton;
     
     public EndScreen(int score, GameScreen game) {
         createEndGamePanel(score);
@@ -61,6 +58,7 @@ public class EndScreen  extends JFrame {
     private void createEndGamePanel(int score) {
         endGamePanel = new JPanel();
         endGamePanel.setLayout(new GridLayout(2,3,100,300));
+        endGamePanel.setBackground(Color.WHITE);
         scoreLabel = new JLabel("Score: " + score);
         Font font = new Font("MONOSPACED",Font.PLAIN,24);
         scoreLabel.setFont(font);

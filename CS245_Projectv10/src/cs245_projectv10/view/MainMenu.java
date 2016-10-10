@@ -32,12 +32,12 @@ import javax.swing.JPanel;
 public class MainMenu extends JFrame {
     
     /* --- --- */
-    JButton playButton;
-    JButton highScoresButton;
-    JButton creditsButton;
-    JPanel  logoPanel;
-    JPanel  centerPanel;
-    JPanel  buttonPanel;
+    private JButton playButton;
+    private JButton highScoresButton;
+    private JButton creditsButton;
+    private JPanel  logoPanel;
+    private JPanel  centerPanel;
+    private JPanel  buttonPanel;
     
     public MainMenu() {
         setFrameAttributes();

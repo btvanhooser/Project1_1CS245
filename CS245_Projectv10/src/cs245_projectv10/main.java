@@ -13,7 +13,6 @@
 ****************************************************************/
 package cs245_projectv10;
 
-import cs245_projectv10.screens.GameScreen;
 import cs245_projectv10.screens.SplashScreen;
 import cs245_projectv10.view.MainMenu;
 import java.awt.event.ActionEvent;
@@ -30,17 +29,14 @@ public class main {
         SwingUtilities.invokeLater(() -> {
             
             SplashScreen splash = new SplashScreen();
-            //System.out.println("Bounds: " + splash.getBounds());
             
-            Timer timer = new Timer(1000, (ActionEvent e) -> {
+            Timer timer = new Timer(3000, (ActionEvent e) -> {
                 splash.dispose();
                 mainMenu = new MainMenu();
             });
             timer.setRepeats(false);
             timer.start();
             
-            // Uncomment to use for debugging Hangman game
-//            GameScreen game = new GameScreen();
         });
     }
 }

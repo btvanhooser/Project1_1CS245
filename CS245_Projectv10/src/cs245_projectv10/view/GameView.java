@@ -102,6 +102,7 @@ public class GameView extends JPanel {
                 
         endGameLabel.setFont(font);
         endGameLabel.setHorizontalTextPosition(CENTER);
+        endGamePanel.setBackground(Color.WHITE);
 
         fillMissedGuesses(fullWord);
         endGamePanel.add(endGameLabel);
@@ -120,7 +121,8 @@ public class GameView extends JPanel {
         headerPanel = new JPanel();
         headerPanel.setBorder(BorderFactory.createLineBorder(Color.black));
         headerPanel.setLayout(new GridLayout(0,4));
-
+        headerPanel.setBackground(Color.WHITE);
+        
         headerPanel.add(clockTextArea);
         headerPanel.add(new JLabel());
         headerPanel.add(new JLabel());
@@ -157,12 +159,17 @@ public class GameView extends JPanel {
         
         hangmanPanel = new JPanel();
         manPanel     = new JPanel();
-        manBuffer = new JTextArea();
-        Font font = new Font("MONOSPACED",Font.PLAIN,5);
+        manBuffer    = new JTextArea();
+        Font font    = new Font("MONOSPACED",Font.PLAIN,5);
+        
         manBuffer.setFont(font);
         manBuffer.setColumns(75);
+        
         drawNoose(0);
+        
+        manPanel.setBackground(Color.WHITE);
         manPanel.add(manBuffer);
+        
         hangmanPanel.setBorder(BorderFactory.createLineBorder(Color.black));
         hangmanPanel.setLayout(new BorderLayout());
         hangmanPanel.add(manPanel,BorderLayout.CENTER);
@@ -173,6 +180,7 @@ public class GameView extends JPanel {
         keyboardPanel = new JPanel();
         keyboardPanel.setBorder(BorderFactory.createLineBorder(Color.black));
         keyboardPanel.setLayout(new GridLayout(2,13,5,5));
+        keyboardPanel.setBackground(Color.WHITE);
         for (int ii = 0; ii < controller.getSize(); ++ii ) {
             keyboardPanel.add(controller.getKeyboardList().get(ii));
         }
@@ -195,6 +203,7 @@ public class GameView extends JPanel {
         currentWord = "---";
         wordPanel = new JPanel();
         wordPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        wordPanel.setBackground(Color.WHITE);
         currentWordList = new LinkedList<>();
 
         updateWord();
