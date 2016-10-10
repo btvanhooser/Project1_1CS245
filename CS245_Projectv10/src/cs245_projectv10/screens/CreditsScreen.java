@@ -13,11 +13,18 @@
 ****************************************************************/
 package cs245_projectv10.screens;
 
+import cs245_projectv10.Globals;
 import cs245_projectv10.view.MainMenu;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
 import java.util.LinkedList;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import static javax.swing.SwingConstants.*;
 
 /**
  *
@@ -25,15 +32,22 @@ import javax.swing.JPanel;
  */
 public class CreditsScreen extends JFrame {
     
-    /* --- Cosntants ---*/
-    private String [] names = {"Alfredo Ceballos 010270728",
-                               "Andrew Olaveson 010481549",
-                               "Brian Van Hooser 009344504",
-                               "Melanie Giusti 010829117"};
+    /* --- Constants ---*/
+    private final MainMenu mainMenu;
+    private final String [] names = {"Alfredo Ceballos, 010270728",
+                                     "Andrew Olaveson, 010481549",
+                                     "Brian Van Hooser, 009344504",
+                                     "Melanie Giusti, 010829117"};
     private LinkedList<JLabel> nameLabels;
+    private JPanel creditsPanel;
+    private JPanel backButtonPanel;
+    private JLabel creditsLabel;
+    private JButton backButton;
     
     public CreditsScreen(MainMenu mainMenu) {
+        this.mainMenu = mainMenu;
         setFrameAttributes();
+        addActionListenerToButton();
         addComponentsToFrame();
     }
     
@@ -41,6 +55,10 @@ public class CreditsScreen extends JFrame {
     /* --- Helper Methods --- */
     
     private void setFrameAttributes() {
+        backButton = new JButton("Back");
+        backButton.setBackground(Globals.BUTTON_COLOR);
+        setLayout(new BorderLayout());
+        setBackground(Color.WHITE);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600,400);
         setLocationRelativeTo(null);
@@ -48,10 +66,32 @@ public class CreditsScreen extends JFrame {
     }
     
     private void addComponentsToFrame() {
+        nameLabels      = new LinkedList<>();
+        creditsLabel    = new JLabel("--- CREDITS ---",CENTER);
+        creditsPanel    = new JPanel(new GridLayout(0,1));
+        backButtonPanel = new JPanel(new BorderLayout());
+        
+        creditsPanel.add(creditsLabel);
         for (int ii = 0; ii < names.length; ++ii) {
-            nameLabels.add(new JLabel(names[ii]));
+            nameLabels.add(new JLabel(names[ii],CENTER));
             nameLabels.get(ii).setText(names[ii]);
+            creditsPanel.add(nameLabels.get(ii));
         }
+        
+        backButtonPanel.add(backButton,BorderLayout.WEST);
+        creditsPanel.setBackground(Color.WHITE);
+        backButtonPanel.setBackground(Color.WHITE);
+        add(new JLabel(),BorderLayout.NORTH);
+        add(creditsPanel,BorderLayout.CENTER);
+        add(backButtonPanel,BorderLayout.SOUTH);
+        
+    }
+    
+    private void addActionListenerToButton() {
+        backButton.addActionListener((ActionEvent e)-> {
+            mainMenu.setVisible(true);
+            dispose();
+        });
     }
     
 }
