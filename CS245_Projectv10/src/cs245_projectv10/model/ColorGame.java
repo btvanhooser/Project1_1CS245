@@ -27,7 +27,7 @@ import javax.swing.JLabel;
  */
 import java.util.LinkedList;
 import javax.swing.JButton;
-public class ColorGame implements ActionListener{
+public class ColorGame {
     
     private final int [][]coordinateArray = {
                                    {30,10,4,150,100,10,250,160,160,410,220},
@@ -53,7 +53,7 @@ public class ColorGame implements ActionListener{
         this.view = view;
         this.controller = controller;
         colorList = controller.getColorList();
-
+        addActionListenersToControllerButtons();
         update();
     }
     
@@ -105,12 +105,7 @@ public class ColorGame implements ActionListener{
     }
     
     public void endGame() {
-        new EndScreen(-1, null);    // FIX
+        new EndScreen(Globals.COLOR_GAME_SCORE, null);    // FIX
         view.dispose();
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        
     }
 }

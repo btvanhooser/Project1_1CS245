@@ -59,7 +59,7 @@ public class EndScreen  extends JFrame {
         endGamePanel = new JPanel();
         endGamePanel.setLayout(new GridLayout(2,3,100,300));
         endGamePanel.setBackground(Color.WHITE);
-        scoreLabel = new JLabel("Score: " + score);
+        scoreLabel = new JLabel("Score: " + Globals.COLOR_GAME_SCORE);
         Font font = new Font("MONOSPACED",Font.PLAIN,24);
         scoreLabel.setFont(font);
         endGameButton = new JButton("End");
