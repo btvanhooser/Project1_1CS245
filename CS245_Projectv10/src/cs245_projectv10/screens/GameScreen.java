@@ -11,7 +11,7 @@ package cs245_projectv10.screens;
 
 import cs245_projectv10.controller.Keyboard;
 import cs245_projectv10.model.Hangman;
-import cs245_projectv10.view.GameView;
+import cs245_projectv10.view.HangmanGameView;
 import javax.swing.JFrame;
 
 
@@ -22,14 +22,14 @@ import javax.swing.JFrame;
  */
 public class GameScreen  extends JFrame {
     /* Variables */
-    GameView view;
+    HangmanGameView view;
     Hangman  model;
     Keyboard controller;
     
     
     public GameScreen() {
         controller = new Keyboard();
-        view = new GameView(controller);
+        view = new HangmanGameView(controller);
         model = new Hangman(view, controller, this);
         
         setFrameAttributes();

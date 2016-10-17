@@ -11,6 +11,7 @@
 package cs245_projectv10.controller;
 
 import cs245_projectv10.Globals;
+import java.awt.Color;
 import java.awt.Insets;
 import java.util.LinkedList;
 import javax.swing.JButton;
@@ -25,9 +26,11 @@ public class Keyboard {
     /* --- Constants--- */
     private final int FIRST_LETTER = 65;
     private final int LAST_LETTER = 90;
+    private final Color[] COLORS = {Color.RED, Color.YELLOW,Color.GREEN, Color.BLUE, Color.MAGENTA};
     
     /* --- Variables --- */
     private LinkedList<JButton> keyList;
+    private LinkedList<JButton> colorList;
     private JButton skipButton;
     private JButton nextButton;
     
@@ -41,6 +44,8 @@ public class Keyboard {
     public JButton getSkipButton(){ return skipButton; }
     public JButton getNextButton(){ return nextButton; }
     public LinkedList<JButton> getKeyboardList() { return keyList; }
+    public LinkedList<JButton> getColorList() { return colorList; }
+        
     
     
     /* --- Helper Methods --- */
@@ -59,6 +64,12 @@ public class Keyboard {
             keyList.add(new JButton(Character.toString((char)ii)));
             keyList.get(ii - FIRST_LETTER).setMargin(new Insets(1,1,1,1));
             keyList.get(ii- FIRST_LETTER).setBackground(Globals.BUTTON_COLOR);
+        }
+        
+        colorList = new LinkedList<>();
+        for (int ii = 0; ii < 5; ++ii) {
+            colorList.add(new JButton());
+            colorList.get(ii).setBackground(COLORS[ii]);
         }
     }
 }

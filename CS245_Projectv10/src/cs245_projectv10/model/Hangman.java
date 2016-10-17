@@ -14,7 +14,8 @@ import cs245_projectv10.Globals;
 import cs245_projectv10.controller.Keyboard;
 import cs245_projectv10.screens.EndScreen;
 import cs245_projectv10.screens.GameScreen;
-import cs245_projectv10.view.GameView;
+import cs245_projectv10.view.ColorGameView;
+import cs245_projectv10.view.HangmanGameView;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 
@@ -25,7 +26,7 @@ public class Hangman {
     
     /*Variables*/
     GameScreen             game;
-    GameView               view;
+    HangmanGameView        view;
     Keyboard               controller;
     private  String        guessWord;
     private  StringBuilder wordState;
@@ -33,7 +34,7 @@ public class Hangman {
     private  int           score;
     
     /* Model constructor*/
-    public Hangman(GameView view, Keyboard controller, GameScreen game) {
+    public Hangman(HangmanGameView view, Keyboard controller, GameScreen game) {
         this.game = game;
         this.controller = controller;
         this.view = view;
@@ -81,7 +82,9 @@ public class Hangman {
     /*Ends game and goes to "End Game" screen*/
     private void endGame(int score){
 //        view.endHangman();
-        EndScreen end = new EndScreen(score, game);
+        //EndScreen end = new EndScreen(score, game);
+        ColorGameView colorGameView  = new ColorGameView(controller);
+        ColorGame     colorGameModel = new ColorGame(colorGameView,controller); 
         game.dispose();
     }
     

@@ -38,7 +38,7 @@ import javax.swing.Timer;
  *  to here by using its update method. This method contains all of the parameters 
  *  which can change during the game.
  */
-public class GameView extends JPanel {
+public class HangmanGameView extends JPanel {
     
     /* --- Constants --- */
     private final Keyboard controller;
@@ -64,7 +64,7 @@ public class GameView extends JPanel {
     
    
     @SuppressWarnings("OverridableMethodCallInConstructor")
-    public GameView(Keyboard controller) {
+    public HangmanGameView(Keyboard controller) {
         this.controller = controller;
         createWordPanel();
         createHangmanPanel();
