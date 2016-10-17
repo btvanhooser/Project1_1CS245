@@ -2,10 +2,12 @@
 * file: HighScoreScreen.java
 * @author: Brian Van Hooser
 * @author: Melanie Giusti
+* @author: Alfredo Ceballos
 * class: CS 245.01 – Programming Graphical User Interfaces
 *
-* date last modified:
+* date last modified: 10/16/2016 12:26PM
 * purpose: Displays top 5 player's high scores
+*          Added functionality to read in high score from file
 ****************************************************************/
 package cs245_projectv10.screens;
 
@@ -21,13 +23,17 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import java.io.*;
 
 /*TODO: Add functionality and remove dummy placeholder scores*/
+// Done
 public class HighScoreScreen extends JFrame {
     
-    /*TODO: Replace with actual scores from file*/
-    private final String DUMMY_SCORES [] = {"AAA...1000","BBB...900","CCC...800",
-                                            "DDD...700","EEE...600"};
+    /*TODO: Replace with actual scores from file
+     * Done as labels are created
+     *private final String DUMMY_SCORES [] = {"AAA...1000","BBB...900","CCC...800",
+     *                                       "DDD...700","EEE...600"};
+     */
     
     private MainMenu mainMenu;
     private JButton  backButton;
@@ -39,7 +45,14 @@ public class HighScoreScreen extends JFrame {
         this.mainMenu = mainMenu;
         
         setFrameAttributes();
-        createCenterPanel();
+        /*A try catch block is used to handle an exception thrown if an error
+        occurs when taking in scores from the text file*/
+        try{
+            createCenterPanel();
+        }
+        catch(IOException e){
+            System.out.println("High scores file not found...");
+        }
         createFooterPanel();
         addComponentsToFrame();
         addActionListeners();
@@ -56,18 +69,24 @@ public class HighScoreScreen extends JFrame {
         getContentPane().setBackground(Color.WHITE);
     }
     
-    /*Creates center panel to hold dummy high score values*/
-    private void createCenterPanel(){
+    /*Creates center panel and brings in high scores from text file*/
+    private void createCenterPanel() throws IOException{
         centerPanel            = new JPanel();
         JLabel highScoresLabel = new JLabel("--- HIGH SCORES ---",SwingConstants.CENTER);
         
         centerPanel.setLayout(new GridLayout(0,1));
         centerPanel.setBackground(Color.WHITE);
         
+        /*The scores are read line by line and added to the labels
+          as they are created*/
         centerPanel.add(highScoresLabel);
-        
-        for(int ii = 0; ii < DUMMY_SCORES.length; ii++){
-            JLabel scoreLabel = new JLabel(DUMMY_SCORES[ii],SwingConstants.CENTER);
+        String scoresPath = "src\\cs245_projectv10\\resources\\highscores.txt";     
+        BufferedReader br = new BufferedReader(new FileReader(scoresPath));
+        String line = br.readLine();
+   
+        while(line != null){
+            line = br.readLine();
+            JLabel scoreLabel = new JLabel(line, SwingConstants.CENTER);
             centerPanel.add(scoreLabel);
         }
         
