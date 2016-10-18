@@ -10,6 +10,7 @@
 ****************************************************************/
 package cs245_projectv10.view;
 
+import cs245_projectv10.Globals;
 import cs245_projectv10.controller.Keyboard;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -52,6 +53,7 @@ public class ColorGameView extends JFrame {
     public void update(int [] coordinates, JLabel currentColor) {
         buttonCoordinates = coordinates;
         this.currentColor = currentColor;
+        updateScore();
         headerPanel.remove(6);
         headerPanel.add(currentColor, 6);
         addButtonsToMainPanel();
@@ -96,6 +98,11 @@ public class ColorGameView extends JFrame {
         add(headerPanel,BorderLayout.NORTH);
         add(mainPanel,BorderLayout.CENTER);
     }
+    
+    private void updateScore() {
+        scoreLabel.setText(" Score: "+ Integer.toString(Globals.COLOR_GAME_SCORE));
+    }
+        
     private void startClock() {
         timer = new Timer(1000, (ActionEvent e) -> {
             clockTextArea.setText(dateFormat.format(new Date()));
