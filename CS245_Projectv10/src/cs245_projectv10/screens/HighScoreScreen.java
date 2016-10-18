@@ -80,8 +80,8 @@ public class HighScoreScreen extends JFrame {
           as they are created*/
         centerPanel.add(highScoresLabel);
    
-        for(int i = 0; i < Globals.USER_LIST.length; i++){
-            JLabel scoreLabel = new JLabel(Globals.USER_LIST[i] + " " + Globals.USER_SCORES[i], SwingConstants.CENTER);
+        for(int i = 0; i < Globals.HIGH_SCORES.length; i++){
+            JLabel scoreLabel = new JLabel(Globals.HIGH_SCORES[i].getName() + " . . . " + Globals.HIGH_SCORES[i].getScore(), SwingConstants.CENTER);
             centerPanel.add(scoreLabel);
         }
         

@@ -12,19 +12,21 @@
 package cs245_projectv10;
 
 import java.awt.Color;
+import java.io.File;
 
 /**
  *
  * @author andrew, brian
  */
 public class Globals {
-    public static final Color BUTTON_COLOR = new Color(204, 204, 204);
-    public static final int    MAX_SCORE        = 100;
-    public static final int    MAX_TRYS         = 6;
-    public static final int    POINTS_TO_DEDUCT = 10;
-    public static final int    MAX_COLOR_TRIES = 5;
-    public static int          HANGMAN_GAME_SCORE = MAX_SCORE;
-    public static int          COLOR_GAME_SCORE = 0;
+    public static final File   HIGH_SCORES_FILE   = new File("src\\cs245_projectv10\\resources\\highscores.txt");
+    public static final Color  BUTTON_COLOR       = new Color(204, 204, 204);
+    public static final int    MAX_SCORE          = 100;
+    public static final int    MAX_TRYS           = 6;
+    public static final int    POINTS_TO_DEDUCT   = 10;
+    public static final int    MAX_COLOR_TRIES    = 5;
+    public static int          HANGMAN_GAME_SCORE = 100;
+    public static int          COLOR_GAME_SCORE   = 0;
     
     public static final String WORD_LIST [] = {"ABSTRACT","CEMETERY","NURSE",
                                                "PHARMACY","CLIMBING"};
@@ -43,7 +45,6 @@ public class Globals {
                                                "java.awt.Color[r=0,g=255,b=0]"/*Green*/, 
                                                "java.awt.Color[r=0,g=0,b=255]"/*Blue*/,
                                                "java.awt.Color[r=255,g=0,b=255]"/*Purple AKA Magenta*/};
-    
-    public static String[] USER_LIST = new String[5];
-    public static int[] USER_SCORES = new int[5];
+
+    public static HighScoreEntry [] HIGH_SCORES = new HighScoreEntry[5];
 }

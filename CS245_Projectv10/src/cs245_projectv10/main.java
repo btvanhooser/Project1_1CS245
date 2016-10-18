@@ -44,10 +44,10 @@ public class main {
     }
     
     private static void loadUpHighScoresFromFile() {
-        File file = new File("src//cs245_projectv10//resources//highscores.txt");
+        
         Scanner fileScanner = null;
         try {
-            fileScanner = new Scanner(file);
+            fileScanner = new Scanner(Globals.HIGH_SCORES_FILE);
         }
         catch(FileNotFoundException e){
             e.printStackTrace();
@@ -56,9 +56,11 @@ public class main {
         while (fileScanner.hasNext()){
             String tempUser = fileScanner.nextLine();
             int tempScore = Integer.parseInt(fileScanner.nextLine());
-            Globals.USER_LIST[player] = tempUser;
-            Globals.USER_SCORES[player] = tempScore;
+            HighScoreEntry h = new HighScoreEntry(tempUser,tempScore);
+            Globals.HIGH_SCORES[player] = h;
             player++;
         }
+        
+        fileScanner.close();
     }
 }
