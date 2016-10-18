@@ -80,13 +80,9 @@ public class HighScoreScreen extends JFrame {
         /*The scores are read line by line and added to the labels
           as they are created*/
         centerPanel.add(highScoresLabel);
-        String scoresPath = "src\\cs245_projectv10\\resources\\highscores.txt";     
-        BufferedReader br = new BufferedReader(new FileReader(scoresPath));
-        String line = br.readLine();
    
-        while(line != null){
-            line = br.readLine();
-            JLabel scoreLabel = new JLabel(line, SwingConstants.CENTER);
+        for(int i = 0; i < Globals.USER_LIST.length; i++){
+            JLabel scoreLabel = new JLabel(Globals.USER_LIST[i] + " " + Globals.USER_SCORES[i], SwingConstants.CENTER);
             centerPanel.add(scoreLabel);
         }
         

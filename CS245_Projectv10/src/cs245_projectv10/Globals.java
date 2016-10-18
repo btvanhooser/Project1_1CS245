@@ -43,4 +43,6 @@ public class Globals {
                                                "java.awt.Color[r=0,g=0,b=255]"/*Blue*/,
                                                "java.awt.Color[r=255,g=0,b=255]"/*Purple AKA Magenta*/};
     
+    public static String[] USER_LIST = new String[5];
+    public static int[] USER_SCORES = new int[5];
 }
