@@ -19,6 +19,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 /**
  * EndScreen Displays the end score and a button to go back to the main menu
@@ -30,15 +31,15 @@ public class EndScreen  extends JFrame {
     private JLabel   scoreLabel;
     private JButton  endGameButton;
     
-    public EndScreen(int score, GameScreen game) {
-        createEndGamePanel(score);
+    public EndScreen(GameScreen game) {
+        createEndGamePanel();
         setFrameAttributes();
-        endGamePanel.add(new JLabel());
+//        endGamePanel.add(new JLabel());
         endGamePanel.add(scoreLabel);
-        endGamePanel.add(new JLabel());
+//        endGamePanel.add(new JLabel());
         endGamePanel.add(new JLabel());
         endGamePanel.add(endGameButton);
-        endGamePanel.add(new JLabel());
+//        endGamePanel.add(new JLabel());
         addActionListenersToEndButton();
     }
        
@@ -55,11 +56,13 @@ public class EndScreen  extends JFrame {
     }    
     
     // Create Endgame Panel ontop of the Frame
-    private void createEndGamePanel(int score) {
+    private void createEndGamePanel() {
+        int totalscore = Globals.HANGMAN_GAME_SCORE + Globals.COLOR_GAME_SCORE;
+        
         endGamePanel = new JPanel();
-        endGamePanel.setLayout(new GridLayout(2,3,100,300));
+        endGamePanel.setLayout(new GridLayout(3,1,50,100));
         endGamePanel.setBackground(Color.WHITE);
-        scoreLabel = new JLabel("Score: " + Globals.COLOR_GAME_SCORE);
+        scoreLabel = new JLabel("Score: " + totalscore, SwingConstants.CENTER);
         Font font = new Font("MONOSPACED",Font.PLAIN,24);
         scoreLabel.setFont(font);
         endGameButton = new JButton("End");

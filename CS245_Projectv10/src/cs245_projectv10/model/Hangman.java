@@ -84,7 +84,7 @@ public class Hangman {
 //        view.endHangman();
         //EndScreen end = new EndScreen(score, game);
         ColorGameView colorGameView  = new ColorGameView(controller);
-        ColorGame     colorGameModel = new ColorGame(colorGameView,controller); 
+        ColorGame     colorGameModel = new ColorGame(colorGameView,controller,game); 
         game.dispose();
     }
     

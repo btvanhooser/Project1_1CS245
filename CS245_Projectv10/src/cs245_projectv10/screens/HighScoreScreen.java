@@ -15,7 +15,6 @@ import cs245_projectv10.Globals;
 import cs245_projectv10.view.MainMenu;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;

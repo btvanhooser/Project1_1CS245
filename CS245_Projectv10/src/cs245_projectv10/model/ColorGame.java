@@ -41,6 +41,7 @@ public class ColorGame {
                                    {110,60,380,120,50,150,490,20,220,200},
                                    {260,220,470,210,60,50,370,50,220,80}};
     private ColorGameView view;
+    GameScreen game;
     private int iteration;
     private JLabel tempLabel;
     private Keyboard controller;
@@ -48,10 +49,11 @@ public class ColorGame {
     private String userColorPicked;
     private LinkedList<JButton> colorList;
     
-    public ColorGame(ColorGameView view, Keyboard controller) {
+    public ColorGame(ColorGameView view, Keyboard controller, GameScreen game) {
         iteration = 1;
         this.view = view;
         this.controller = controller;
+        this.game = game;
         colorList = controller.getColorList();
         addActionListenersToControllerButtons();
         update();
@@ -105,7 +107,7 @@ public class ColorGame {
     }
     
     public void endGame() {
-        new EndScreen(Globals.COLOR_GAME_SCORE, null);    // FIX
+        new EndScreen(game);
         view.dispose();
     }
 }
