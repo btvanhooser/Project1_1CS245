@@ -19,7 +19,7 @@ import java.io.File;
  * @author andrew, brian
  */
 public class Globals {
-    public static final File   HIGH_SCORES_FILE   = new File("src\\cs245_projectv10\\resources\\highscores.txt");
+    public static final File   HIGH_SCORES_FILE   = new File("src//cs245_projectv10//resources//highscores.txt");
     public static final Color  BUTTON_COLOR       = new Color(204, 204, 204);
     public static final int    MAX_SCORE          = 100;
     public static final int    MAX_TRYS           = 6;
