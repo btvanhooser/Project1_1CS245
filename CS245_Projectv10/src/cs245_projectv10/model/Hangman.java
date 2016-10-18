@@ -12,7 +12,6 @@ package cs245_projectv10.model;
 
 import cs245_projectv10.Globals;
 import cs245_projectv10.controller.Keyboard;
-import cs245_projectv10.screens.EndScreen;
 import cs245_projectv10.screens.GameScreen;
 import cs245_projectv10.view.ColorGameView;
 import cs245_projectv10.view.HangmanGameView;
@@ -31,7 +30,7 @@ public class Hangman {
     private  String        guessWord;
     private  StringBuilder wordState;
     private  int           wrongGuesses;
-    private  int           score;
+//    private  int           score;
     
     /* Model constructor*/
     public Hangman(HangmanGameView view, Keyboard controller, GameScreen game) {
@@ -41,13 +40,13 @@ public class Hangman {
         addActionListenersToControllerButtons();
         
         // Set initial game state
-        score        = Globals.MAX_SCORE;
+//        score        = Globals.MAX_SCORE;
         wrongGuesses = 0;
         guessWord    = getRandomWord(Globals.WORD_LIST);
         wordState    = new StringBuilder(guessWord.length());
         
         for(int i = 0; i < guessWord.length(); i++){wordState = wordState.append("_");}
-        view.update(wordState.toString(),wrongGuesses,score);
+        view.update(wordState.toString(),wrongGuesses);
         
     }
     
@@ -71,18 +70,16 @@ public class Hangman {
         else{                               // Otherwise decrement the score
             if(wrongGuesses < Globals.MAX_TRYS){
                 wrongGuesses++;
-                score -= Globals.POINTS_TO_DEDUCT;
+                Globals.HANGMAN_GAME_SCORE -= Globals.POINTS_TO_DEDUCT;
             }
         }
         
-        view.update(wordState.toString(),wrongGuesses,score);
+        view.update(wordState.toString(),wrongGuesses);
         checkWin();
     }
     
     /*Ends game and goes to "End Game" screen*/
-    private void endGame(int score){
-//        view.endHangman();
-        //EndScreen end = new EndScreen(score, game);
+    private void endGame(){
         ColorGameView colorGameView  = new ColorGameView(controller);
         ColorGame     colorGameModel = new ColorGame(colorGameView,controller,game); 
         game.dispose();
@@ -102,12 +99,12 @@ public class Hangman {
     private void addActionListenersToControllerButtons() {
         // Add action listener for skip button
         controller.getSkipButton().addActionListener((ActionEvent e) ->{
-            score = 0;
-            endGame(score);
+            Globals.HANGMAN_GAME_SCORE = 0;
+            endGame();
         });
         
         controller.getNextButton().addActionListener((ActionEvent e) ->{
-            endGame(score);
+            endGame();
         });
         
         // Add action listeners to virtual keyboard

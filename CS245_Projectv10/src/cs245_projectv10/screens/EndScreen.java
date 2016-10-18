@@ -34,12 +34,9 @@ public class EndScreen  extends JFrame {
     public EndScreen(GameScreen game) {
         createEndGamePanel();
         setFrameAttributes();
-//        endGamePanel.add(new JLabel());
         endGamePanel.add(scoreLabel);
-//        endGamePanel.add(new JLabel());
         endGamePanel.add(new JLabel());
         endGamePanel.add(endGameButton);
-//        endGamePanel.add(new JLabel());
         addActionListenersToEndButton();
     }
        

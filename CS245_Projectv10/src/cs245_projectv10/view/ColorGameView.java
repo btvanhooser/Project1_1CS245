@@ -57,10 +57,12 @@ public class ColorGameView extends JFrame {
         headerPanel.remove(6);
         headerPanel.add(currentColor, 6);
         addButtonsToMainPanel();
+        validate();
     }
     
     private void setFrameAttributes() {
         setLayout(new BorderLayout());
+        pack();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600,400);
         setLocationRelativeTo(null);

@@ -77,9 +77,9 @@ public class HangmanGameView extends JPanel {
     // Update function is driven from the Hangman Model
     //  Will update the Score, Current Word displayed with missing letters and 
     //  state of the Hang-man. 
-    public void update(String wordState, int wrongGuesses, int score) {
+    public void update(String wordState, int wrongGuesses) {
         currentWord = wordState;
-        updateScore(Integer.toString(score));
+        updateScore(Integer.toString(Globals.HANGMAN_GAME_SCORE));
         updateWord();
         drawNoose(wrongGuesses);
     }

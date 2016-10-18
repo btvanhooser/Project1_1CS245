@@ -44,7 +44,7 @@ public class main {
     }
     
     private static void loadUpHighScoresFromFile() {
-        File file = new File("src\\cs245_projectv10\\resources\\highscores.txt");
+        File file = new File("src//cs245_projectv10//resources//highscores.txt");
         Scanner fileScanner = null;
         try {
             fileScanner = new Scanner(file);
