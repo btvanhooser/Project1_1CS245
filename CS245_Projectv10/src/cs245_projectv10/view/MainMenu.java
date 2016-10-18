@@ -20,9 +20,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -48,7 +45,6 @@ public class MainMenu extends JFrame {
         createCenterPanel();
         addComponentsToFrame();
         addActionListeners();
-        loadUpHighScoresFromFile();
     }
     
     
@@ -120,24 +116,5 @@ public class MainMenu extends JFrame {
             CreditsScreen credits = new CreditsScreen(this);
             setVisible(false);
         });
-    }
-
-    private void loadUpHighScoresFromFile() {
-        File file = new File("src\\cs245_projectv10\\resources\\highscores.txt");
-        Scanner fileScanner = null;
-        try {
-            fileScanner = new Scanner(file);
-        }
-        catch(FileNotFoundException e){
-            e.printStackTrace();
-        }
-        int player = 0;
-        while (fileScanner.hasNext()){
-            String tempUser = fileScanner.nextLine();
-            int tempScore = Integer.parseInt(fileScanner.nextLine());
-            Globals.USER_LIST[player] = tempUser;
-            Globals.USER_SCORES[player] = tempScore;
-            player++;
-        }
     }
 }

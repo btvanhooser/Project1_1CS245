@@ -15,7 +15,7 @@ import java.awt.Color;
 
 /**
  *
- * @author andrew
+ * @author andrew, brian
  */
 public class Globals {
     public static final Color BUTTON_COLOR = new Color(204, 204, 204);
@@ -23,6 +23,7 @@ public class Globals {
     public static final int    MAX_TRYS         = 6;
     public static final int    POINTS_TO_DEDUCT = 10;
     public static final int    MAX_COLOR_TRIES = 5;
+    public static int          HANGMAN_GAME_SCORE = 0;
     public static int          COLOR_GAME_SCORE = 0;
     
     public static final String WORD_LIST [] = {"ABSTRACT","CEMETERY","NURSE",
