@@ -71,6 +71,8 @@ public class EndScreen  extends JFrame {
     private void addActionListenersToEndButton() {
         endGameButton.addActionListener((ActionEvent e) ->{
             MainMenu mainMenu = new MainMenu();
+            Globals.COLOR_GAME_SCORE = 0;
+            Globals.HANGMAN_GAME_SCORE = 0;
             dispose();
         });
     }
