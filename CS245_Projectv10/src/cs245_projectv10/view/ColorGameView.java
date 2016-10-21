@@ -29,14 +29,19 @@ import javax.swing.Timer;
 
 public class ColorGameView extends JFrame {
     
-    private JPanel mainPanel;
-    private JPanel headerPanel;
-    private JLabel headerLabel;
-    private JLabel scoreLabel;
-    private JLabel clockTextArea;
+    private JPanel     mainPanel;
+    private JPanel     headerPanel;
+    private JLabel     headerLabel;
+    private JLabel     scoreLabel;
+    private JLabel     clockTextArea;
+    private JLabel     currentColor;
+    private JButton    colorButton1;
+    private JButton    colorButton2;
+    private JButton    colorButton3;
+    private JButton    colorButton4;
+    private JButton    colorButton5;
     private DateFormat dateFormat;
-    private Timer timer;
-    private JLabel currentColor;
+    private Timer      timer;
     
     int [] buttonCoordinates;
     Keyboard controller;
@@ -113,37 +118,32 @@ public class ColorGameView extends JFrame {
     }
     
     private void addButtonsToMainPanel() {
-        JButton button1 = new JButton();
-        JButton button2 = new JButton();
-        JButton button3 = new JButton();
-        JButton button4 = new JButton();
-        JButton button5 = new JButton();
         
-        button1 = controller.getColorList().get(0);
-        button1.setSize(100,100);
-        button1.setLocation(buttonCoordinates[0],buttonCoordinates[1]);
+        colorButton1 = controller.getColorList().get(0);
+        colorButton1.setSize(100,100);
+        colorButton1.setLocation(buttonCoordinates[0],buttonCoordinates[1]);
         
-        button2 = controller.getColorList().get(1);
-        button2.setSize(100,100);
-        button2.setLocation(buttonCoordinates[2],buttonCoordinates[3]);
+        colorButton2 = controller.getColorList().get(1);
+        colorButton2.setSize(100,100);
+        colorButton2.setLocation(buttonCoordinates[2],buttonCoordinates[3]);
         
-        button3 = controller.getColorList().get(2);
-        button3.setSize(100,100);
-        button3.setLocation(buttonCoordinates[4],buttonCoordinates[5]);
+        colorButton3 = controller.getColorList().get(2);
+        colorButton3.setSize(100,100);
+        colorButton3.setLocation(buttonCoordinates[4],buttonCoordinates[5]);
         
-        button4 = controller.getColorList().get(3);
-        button4.setSize(100,100);
-        button4.setLocation(buttonCoordinates[6],buttonCoordinates[7]);
+        colorButton4 = controller.getColorList().get(3);
+        colorButton4.setSize(100,100);
+        colorButton4.setLocation(buttonCoordinates[6],buttonCoordinates[7]);
         
-        button5 = controller.getColorList().get(4);
-        button5.setSize(100,100);
-        button5.setLocation(buttonCoordinates[8],buttonCoordinates[9]);
+        colorButton5 = controller.getColorList().get(4);
+        colorButton5.setSize(100,100);
+        colorButton5.setLocation(buttonCoordinates[8],buttonCoordinates[9]);
         
-        mainPanel.add(button1);
-        mainPanel.add(button2);
-        mainPanel.add(button3);
-        mainPanel.add(button4);
-        mainPanel.add(button5);
+        mainPanel.add(colorButton1);
+        mainPanel.add(colorButton2);
+        mainPanel.add(colorButton3);
+        mainPanel.add(colorButton4);
+        mainPanel.add(colorButton5);
         
     }
     

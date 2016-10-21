@@ -113,6 +113,6 @@ public class Hangman {
                 update(button.getText());
                 button.setEnabled(false);
             });
-        }
+        }   
     }
 }

@@ -70,6 +70,12 @@ public class Keyboard {
         for (int ii = 0; ii < 5; ++ii) {
             colorList.add(new JButton());
             colorList.get(ii).setBackground(COLORS[ii]);
+            
+            // Added fix to show button color on MAC OS 
+            // -> requires manual definition for mouse hover listeners on color 
+            // game buttons now (ColorGame.java)
+            colorList.get(ii).setOpaque(true); 
+            colorList.get(ii).setBorderPainted(false);
         }
     }
 }

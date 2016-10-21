@@ -15,6 +15,7 @@ import cs245_projectv10.screens.GameScreen;
 import cs245_projectv10.view.ColorGameView;
 import cs245_projectv10.Globals;
 import cs245_projectv10.screens.EndScreen;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.util.Random;
 import java.util.HashSet;
@@ -102,10 +103,35 @@ public class ColorGame {
     private void addActionListenersToControllerButtons() {
         // Add action listeners to virtual keyboard
         for (JButton button : colorList) {
+            
+            Color originalColor = button.getBackground();
+            
+            // Need to explicitly define hover behavior because of fix for 
+            // displaying button color for Mac OS (in Keyboard.java)
+            button.addMouseListener(new java.awt.event.MouseAdapter(){
+                
+                // Highlight button while hovering 
+                @Override
+                public void mouseEntered(java.awt.event.MouseEvent evt){
+                    button.setBackground(originalColor.darker());
+                }
+                
+                // Reset color on exit
+                @Override
+                public void mouseExited(java.awt.event.MouseEvent evt){
+                    button.setBackground(originalColor);
+                }
+            
+            });
+            
             button.addActionListener((ActionEvent e) -> {
+                // Reset button to unhighlighted color when pressed for score
+                // proc purposes
+                button.setBackground(originalColor);
                 userColorPicked = button.getBackground().toString();
                 update();
             });
+            
         }
     }
 }
