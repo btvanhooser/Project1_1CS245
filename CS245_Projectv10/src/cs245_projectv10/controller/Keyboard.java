@@ -63,7 +63,9 @@ public class Keyboard {
         
         keyList = new LinkedList<>();
         for (int ii = FIRST_LETTER; ii <= LAST_LETTER; ++ii) {
-            keyList.add(new JButton(Character.toString((char)ii)));
+            JButton temp = new JButton(Character.toString((char)ii));   //Change made by Alfredo
+            temp.setToolTipText("Select " + Character.toString((char)ii));
+            keyList.add(temp);
             keyList.get(ii - FIRST_LETTER).setMargin(new Insets(1,1,1,1));
             keyList.get(ii- FIRST_LETTER).setBackground(Globals.BUTTON_COLOR);
         }

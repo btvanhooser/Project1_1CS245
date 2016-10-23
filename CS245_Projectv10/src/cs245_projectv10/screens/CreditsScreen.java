@@ -75,7 +75,9 @@ public class CreditsScreen extends JFrame {
         
         creditsPanel.add(creditsLabel);
         for (int ii = 0; ii < names.length; ++ii) {
-            nameLabels.add(new JLabel(names[ii],CENTER));
+            JLabel temp = new JLabel(names[ii],CENTER);
+            temp.setToolTipText(names[ii]);
+            nameLabels.add(temp);
             nameLabels.get(ii).setText(names[ii]);
             creditsPanel.add(nameLabels.get(ii));
         }

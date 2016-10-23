@@ -90,6 +90,7 @@ public class ColorGame {
             }
             tempLabel = new JLabel("<html><font color='" + Globals.COLOR_LIST[colorChoice]+"'>"
                                    +Globals.COLOR_LIST[textChoice]+"</font></html>");
+            tempLabel.setToolTipText("Selected color");
             iteration++;
             correctColor = Globals.COLOR_LIST_RGB[colorChoice];
             view.update(coordinateArray[coordinateChoice],tempLabel);

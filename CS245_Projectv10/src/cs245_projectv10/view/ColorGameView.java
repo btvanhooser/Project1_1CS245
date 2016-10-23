@@ -81,6 +81,7 @@ public class ColorGameView extends JFrame {
     
     private void createHeaderPanelItems() {
         headerLabel = new JLabel("Color Game");
+        headerLabel.setToolTipText("Current game");
         scoreLabel = new JLabel(" Score: ---");
         scoreLabel.setToolTipText("This is your score");
         dateFormat = new SimpleDateFormat("MM/dd/yyy HH:mm:ss");
