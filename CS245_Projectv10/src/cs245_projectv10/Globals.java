@@ -1,5 +1,5 @@
 /***************************************************************
-* file: Hangman.java
+* file: Globals.java
 * @author: Andrew Olaveson
 * @author: Melanie Giusti
 * @author: Alfredo Ceballos
@@ -7,7 +7,7 @@
 * class: CS 245.01 – Programming Graphical User Interfaces
 *
 * date last modified: 10/05/16 12:52 a.m.  
-* purpose: Added color game max tries and color list
+* purpose: All Global variables used throughout the program
 ****************************************************************/
 package cs245_projectv10;
 

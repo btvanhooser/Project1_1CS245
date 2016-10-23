@@ -1,8 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/***************************************************************
+* file: SudokuGrid.java
+* @author: Brian Van Hooser
+* class: CS 245.01 – Programming Graphical User Interfaces
+*
+* date last modified: 10/23/2016
+* purpose: Overall grid to contain the inner grids that hold the
+* squares with data. This also contains the methods to check for 
+* game completion status.
+****************************************************************/
 package customComponents;
 
 import java.awt.Color;
@@ -26,6 +31,8 @@ class SudokuGrid extends JPanel {
     private SudokuGridInner[][] innerGrid;
     private boolean alreadySubmitted;
     
+    //SudokuGrid
+    //Purpose: Constructor
     public SudokuGrid() {
         super(new GridBagLayout());
         
@@ -54,6 +61,9 @@ class SudokuGrid extends JPanel {
         setUpLabels();
     }
     
+    //SetUpLabels
+    //Purpose: helper method to add all data to the sudoku grid. Adds listeners
+    //for data changes as well.
     public void setUpLabels(){
         for (int i = 0; i < 9; i++){
             for (int j = 0; j < 9; j++){
@@ -105,6 +115,8 @@ class SudokuGrid extends JPanel {
         }
     }
     
+    //getCurrentState
+    //purpose: converts the multi-object structure into a simple 2D array
     public String[][] getCurrentState() {
         String[][] grid = new String[9][9];
         for (int i = 0; i < 9; i++){
@@ -115,6 +127,8 @@ class SudokuGrid extends JPanel {
         return grid;
     }
     
+    //checkForBlanks
+    //purpose: returns true if any squares do not contain a number
     public boolean checkForBlanks(){
         for (int i = 0; i < 9; i++){
             for (int j = 0; j < 9; j++){
@@ -124,11 +138,14 @@ class SudokuGrid extends JPanel {
         return false;
     }
 
-    public void checkWin(){
+    //checkWin
+    //purpose: checks all conditions on the grid to see if a win 
+    //scenario has been met or not.
+    public boolean checkWin(){
         if (checkForBlanks()){
             JFrame frame = new JFrame();
             JOptionPane.showMessageDialog(frame, "Not all squares are filled!", "Warning", JOptionPane.WARNING_MESSAGE);
-            return;
+            return false;
         }
         
         String[][] currentState = getCurrentState();
@@ -146,6 +163,7 @@ class SudokuGrid extends JPanel {
             Globals.SUDOKU_GAME_SCORE -= (wrongAnswers*10);
             alreadySubmitted = true;
         }
+        return (!(wrongAnswers > 0));
     }
     
 }

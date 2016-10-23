@@ -1,5 +1,5 @@
 /***************************************************************
-* file: GameView.java
+* file: HangmanGameView.java
 * @author: Andrew Olaveson
 * @author: Melanie Giusti
 * class: CS 245.01 – Programming Graphical User Interfaces

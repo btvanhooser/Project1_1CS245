@@ -1,8 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/***************************************************************
+* file: SudokuGridInner.java
+* @author: Brian Van Hooser
+* class: CS 245.01 – Programming Graphical User Interfaces
+*
+* date last modified: 10/23/2016
+* purpose: Sub grids that contain each individual square. Used 
+* three classes instead of two to provide a better look to the 
+* board.
+****************************************************************/
 package customComponents;
 
 import java.awt.Color;
@@ -20,6 +25,8 @@ class SudokuGridInner extends JPanel {
 
     private SudokuPanel[][] panelList;
     
+    //SudokuGridInner
+    //purpose: constructor
     public SudokuGridInner() {
         super(new GridBagLayout());
         
@@ -45,6 +52,8 @@ class SudokuGridInner extends JPanel {
 
     }
 
+    //getLabelOfPanel
+    //helper method to retrieve the label of a panel in the panelList array.
     public JLabel getLabelOfPanel(int a, int b) { return panelList[a%3][b%3].getLabel();}
     
 }

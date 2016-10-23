@@ -1,5 +1,5 @@
 /***************************************************************
-* file: GameScreen.java
+* file: SplashScreen.java
 * @author: Melanie Giusti
 * @author: Brian Van Hooser
 * class: CS 245.01 – Programming Graphical User Interfaces

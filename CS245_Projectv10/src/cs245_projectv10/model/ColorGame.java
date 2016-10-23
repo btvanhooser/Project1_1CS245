@@ -1,12 +1,12 @@
 /***************************************************************
-* file: Hangman.java
+* file: ColorGame.java
 * @author: Brian Van Hooser
 * @author: Alfredo Ceballos
 * 
 * class: CS 245.01 – Programming Graphical User Interfaces
 *
 * date last modified:  
-* purpose:            Defines the game rules for Hangman
+* purpose:            Defines the game rules for the ColorGame
 ****************************************************************/
 package cs245_projectv10.model;
 
@@ -20,10 +20,6 @@ import java.awt.event.ActionEvent;
 import java.util.Random;
 import java.util.HashSet;
 import javax.swing.JLabel;
-/**
- *
- * @author Melanie
- */
 import java.util.LinkedList;
 import javax.swing.JButton;
 public class ColorGame {

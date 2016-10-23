@@ -45,7 +45,7 @@ public class EndScreen  extends JFrame {
     private boolean  newHighScore;
     
     public EndScreen(GameScreen game) {
-        totalScore = Globals.HANGMAN_GAME_SCORE + Globals.COLOR_GAME_SCORE;
+        totalScore = Globals.HANGMAN_GAME_SCORE + Globals.COLOR_GAME_SCORE + Globals.SUDOKU_GAME_SCORE;
         checkForHighScore();
         
         setFrameAttributes();
@@ -158,6 +158,7 @@ public class EndScreen  extends JFrame {
             //Reset score for games
             Globals.HANGMAN_GAME_SCORE = 100;
             Globals.COLOR_GAME_SCORE = 0;
+            Globals.SUDOKU_GAME_SCORE = 540;
             
             //Store new high score
             if(newHighScore){writeHighScoresToFile();};

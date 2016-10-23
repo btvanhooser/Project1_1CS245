@@ -1,5 +1,5 @@
 /***************************************************************
-* file: EndScreen.java
+* file: MainMenu.java
 * @author: Andrew Olaveson
 * @author: Brian Van Hooser
 * @author: Melanie Giusti
