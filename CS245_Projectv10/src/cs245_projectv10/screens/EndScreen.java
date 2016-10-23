@@ -110,23 +110,27 @@ public class EndScreen  extends JFrame {
     /*Create Endgame Panel for entering player info for new highscore*/
     private void createEndGamePanelWithInput(){
         endGamePanelWithInput = new JPanel();
+        endGamePanelWithInput.setToolTipText("");
         endGamePanelWithInput.setLayout(new GridLayout(3,1));
         endGamePanelWithInput.setBackground(Color.WHITE);
         
         scoreLabel = new JLabel("Score: " + totalScore, SwingConstants.CENTER);
         Font font = new Font("MONOSPACED",Font.PLAIN,24);
         scoreLabel.setFont(font);
+        scoreLabel.setToolTipText("This is your score, duh");
         
         inputName = new JTextField(3);
         
         endGamePanelWithInput.add(new JLabel("NEW HIGH SCORE!",SwingConstants.CENTER));
         endGamePanelWithInput.add(scoreLabel);
+        endGamePanelWithInput.setToolTipText("Literally says \"NEW HIGH SCORE!\"");
         
         JPanel inputPanel = new JPanel();
         inputPanel.setBackground(Color.WHITE);
         inputPanel.setLayout(new FlowLayout());
         inputPanel.add(new JLabel("Enter your initials: ",SwingConstants.CENTER));
         inputPanel.add(inputName);
+        inputPanel.setToolTipText("Input your initials here, duh");
         
         endGamePanelWithInput.add(inputPanel);
         
@@ -138,6 +142,7 @@ public class EndScreen  extends JFrame {
         endGameFooterPanel.setBackground(Color.WHITE);
         endGameButton = new JButton("End");
         endGameButton.setBackground(Globals.BUTTON_COLOR);
+        endGameButton.setToolTipText("End game, duh");
         endGameFooterPanel.add(endGameButton,BorderLayout.CENTER);
     }
     

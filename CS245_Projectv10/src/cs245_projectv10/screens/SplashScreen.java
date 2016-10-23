@@ -48,6 +48,7 @@ public class SplashScreen extends JFrame {
         ImageIcon projectNameIcon = new ImageIcon("src//cs245_projectv10//resources//projectname.png");
         JLabel projectLabel       = new JLabel();
         projectLabel.setIcon(projectNameIcon);
+        projectLabel.setToolTipText("CS254 Project");
         
         JLabel byLineLabel  = new JLabel("By:",SwingConstants.CENTER);
         Font font = new Font("Arial",Font.PLAIN,20);
@@ -56,6 +57,7 @@ public class SplashScreen extends JFrame {
         ImageIcon teamNameIcon = new ImageIcon("src//cs245_projectv10//resources//teamlogo.png");
         JLabel teamLabel       = new JLabel();
         teamLabel.setIcon(teamNameIcon);
+        teamLabel.setToolTipText("The ASCIIckers");
         
         JLabel topBufferLabel = new JLabel();
         topBufferLabel.setBackground(Color.WHITE);

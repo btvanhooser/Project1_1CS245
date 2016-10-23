@@ -164,16 +164,19 @@ public class HangmanGameView extends JPanel {
         
         manBuffer.setFont(font);
         manBuffer.setColumns(75);
+        manBuffer.setToolTipText("DO NOT LET ME DOWN");
         
         drawNoose(0);
         
         manPanel.setBackground(Color.WHITE);
         manPanel.add(manBuffer);
+        manPanel.setToolTipText("DO NOT LET ME DOWN");
         
         hangmanPanel.setBorder(BorderFactory.createLineBorder(Color.black));
         hangmanPanel.setLayout(new BorderLayout());
         hangmanPanel.add(manPanel,BorderLayout.CENTER);
         hangmanPanel.add(wordPanel,BorderLayout.SOUTH);
+        hangmanPanel.setToolTipText("Correctly guessed letters");
     }
     
     private void createKeyboardPanel() {
@@ -183,14 +186,18 @@ public class HangmanGameView extends JPanel {
         keyboardPanel.setBackground(Color.WHITE);
         for (int ii = 0; ii < controller.getSize(); ++ii ) {
             keyboardPanel.add(controller.getKeyboardList().get(ii));
+            keyboardPanel.setToolTipText("");
         }
     }
     
     private void createHeaderPanelItems() {
         headerLabel = new JLabel("HANGMAN");
+        headerLabel.setToolTipText("Current game");
         scoreLabel = new JLabel(" Score: ---");
+        scoreLabel.setToolTipText("Current score");
         dateFormat = new SimpleDateFormat("MM/dd/yyy HH:mm:ss");
         clockTextArea = new JLabel(dateFormat.format(new Date()));
+        clockTextArea.setToolTipText("Current date and time");
     }
     
     // fetches the current hang-man to be drawn on the screen depending 

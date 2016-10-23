@@ -72,6 +72,7 @@ public class HighScoreScreen extends JFrame {
     private void createCenterPanel() throws IOException{
         centerPanel            = new JPanel();
         JLabel highScoresLabel = new JLabel("--- HIGH SCORES ---",SwingConstants.CENTER);
+        highScoresLabel.setToolTipText("--- HIGH SCORES ---");
         
         centerPanel.setLayout(new GridLayout(0,1));
         centerPanel.setBackground(Color.WHITE);
@@ -82,6 +83,7 @@ public class HighScoreScreen extends JFrame {
    
         for(int i = 0; i < Globals.HIGH_SCORES.length; i++){
             JLabel scoreLabel = new JLabel(Globals.HIGH_SCORES[i].getName() + " . . . " + Globals.HIGH_SCORES[i].getScore(), SwingConstants.CENTER);
+            scoreLabel.setToolTipText(Globals.HIGH_SCORES[i].getName() + "'s score");
             centerPanel.add(scoreLabel);
         }
         
@@ -91,6 +93,7 @@ public class HighScoreScreen extends JFrame {
     private void createFooterPanel(){
         footerPanel = new JPanel();
         backButton  = new JButton("Back");
+        backButton.setToolTipText("Return to main menu n00b");
         
         backButton.setBackground(Globals.BUTTON_COLOR);
         footerPanel.setLayout(new BorderLayout());

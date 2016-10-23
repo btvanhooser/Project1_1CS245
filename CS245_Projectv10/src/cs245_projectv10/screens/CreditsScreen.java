@@ -5,11 +5,11 @@
 * 
 * class: CS 245.01 – Programming Graphical User Interfaces
 *
-* date last modified: 10/05/16 12:52 a.m.  
+* date last modified: 10/22/16 7:27PM  
 *  purpose: This is the JPanel that is used to handle the format
 *  and content of the Credits Screen. This is able to switch back
 *  and forth between the MainScreen and this page through the 
-*  MainFrame.
+*  MainFrame. Added tool tips for components
 ****************************************************************/
 package cs245_projectv10.screens;
 
@@ -57,6 +57,7 @@ public class CreditsScreen extends JFrame {
     private void setFrameAttributes() {
         backButton = new JButton("Back");
         backButton.setBackground(Globals.BUTTON_COLOR);
+        backButton.setToolTipText("Return to main menu n00b");
         setLayout(new BorderLayout());
         setBackground(Color.WHITE);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -68,6 +69,7 @@ public class CreditsScreen extends JFrame {
     private void addComponentsToFrame() {
         nameLabels      = new LinkedList<>();
         creditsLabel    = new JLabel("--- CREDITS ---",CENTER);
+        creditsLabel.setToolTipText("--- CREDITS ---");
         creditsPanel    = new JPanel(new GridLayout(0,1));
         backButtonPanel = new JPanel(new BorderLayout());
         

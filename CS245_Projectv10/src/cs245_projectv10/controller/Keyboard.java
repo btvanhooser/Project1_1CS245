@@ -54,10 +54,12 @@ public class Keyboard {
         skipButton = new JButton("Skip");
         skipButton.setBackground(Globals.BUTTON_COLOR);
         skipButton.setMargin(new Insets(1,1,1,1));
+        skipButton.setToolTipText("Use this button to skip the game");
         
         nextButton = new JButton("Next");
         nextButton.setBackground(Globals.BUTTON_COLOR);
         nextButton.setMargin(new Insets(1,1,1,1));
+        nextButton.setToolTipText("Proceed to next game");
         
         keyList = new LinkedList<>();
         for (int ii = FIRST_LETTER; ii <= LAST_LETTER; ++ii) {

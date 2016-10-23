@@ -66,6 +66,7 @@ public class MainMenu extends JFrame {
         JLabel teamLabel       = new JLabel();
         teamLabel.setIcon(teamNameIcon);
         logoPanel.setBackground(Color.WHITE);
+        logoPanel.setToolTipText("The ASCIIckers");
         logoPanel.add(teamLabel);
     }
     
@@ -79,8 +80,11 @@ public class MainMenu extends JFrame {
         buttonPanel.setBackground(Color.WHITE);
         
         playButton       = new JButton("Play");
+        playButton.setToolTipText("Select to begin game");
         highScoresButton = new JButton("High Scores");
+        highScoresButton.setToolTipText("View saved high scores");
         creditsButton    = new JButton("Credits");
+        creditsButton.setToolTipText("Gaze at the masterminds behind this game");
 
         playButton.setBackground(Globals.BUTTON_COLOR);
         highScoresButton.setBackground(Globals.BUTTON_COLOR);

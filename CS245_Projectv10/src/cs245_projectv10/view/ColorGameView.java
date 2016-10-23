@@ -82,8 +82,10 @@ public class ColorGameView extends JFrame {
     private void createHeaderPanelItems() {
         headerLabel = new JLabel("Color Game");
         scoreLabel = new JLabel(" Score: ---");
+        scoreLabel.setToolTipText("This is your score");
         dateFormat = new SimpleDateFormat("MM/dd/yyy HH:mm:ss");
         clockTextArea = new JLabel(dateFormat.format(new Date()));
+        clockTextArea.setToolTipText("Current date and time");
     }
     
     
@@ -122,22 +124,27 @@ public class ColorGameView extends JFrame {
         colorButton1 = controller.getColorList().get(0);
         colorButton1.setSize(100,100);
         colorButton1.setLocation(buttonCoordinates[0],buttonCoordinates[1]);
+        colorButton1.setToolTipText("Red");
         
         colorButton2 = controller.getColorList().get(1);
         colorButton2.setSize(100,100);
         colorButton2.setLocation(buttonCoordinates[2],buttonCoordinates[3]);
+        colorButton2.setToolTipText("Yellow");
         
         colorButton3 = controller.getColorList().get(2);
         colorButton3.setSize(100,100);
         colorButton3.setLocation(buttonCoordinates[4],buttonCoordinates[5]);
+        colorButton3.setToolTipText("Green");
         
         colorButton4 = controller.getColorList().get(3);
         colorButton4.setSize(100,100);
         colorButton4.setLocation(buttonCoordinates[6],buttonCoordinates[7]);
+        colorButton4.setToolTipText("Blue");
         
         colorButton5 = controller.getColorList().get(4);
         colorButton5.setSize(100,100);
         colorButton5.setLocation(buttonCoordinates[8],buttonCoordinates[9]);
+        colorButton5.setToolTipText("Purple");
         
         mainPanel.add(colorButton1);
         mainPanel.add(colorButton2);
