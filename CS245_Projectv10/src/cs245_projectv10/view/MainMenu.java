@@ -84,7 +84,7 @@ public class MainMenu extends JFrame {
         highScoresButton = new JButton("High Scores");
         highScoresButton.setToolTipText("View saved high scores");
         creditsButton    = new JButton("Credits");
-        creditsButton.setToolTipText("Gaze at the masterminds behind this game");
+        creditsButton.setToolTipText("Gaze at the masterminds behind these games");
 
         playButton.setBackground(Globals.BUTTON_COLOR);
         highScoresButton.setBackground(Globals.BUTTON_COLOR);
