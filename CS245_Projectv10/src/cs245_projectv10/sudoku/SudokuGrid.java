@@ -134,13 +134,13 @@ public class SudokuGrid extends JPanel {
             }
         }
         
-        Globals.SUDOKU_GAME_SCORE = 540;
-        Globals.SUDOKU_GAME_SCORE -= (wrongAnswers*10);
-        if (Globals.SUDOKU_GAME_SCORE < 0) {       
-            Globals.SUDOKU_GAME_SCORE = 0;
-        }
-
-        if (!alreadySubmitted) {
+        if (!alreadySubmitted && wrongAnswers != 0) {
+            Globals.SUDOKU_GAME_SCORE = 540;
+            Globals.SUDOKU_GAME_SCORE -= (wrongAnswers*10);
+            if (Globals.SUDOKU_GAME_SCORE < 0) {       
+                Globals.SUDOKU_GAME_SCORE = 0;
+            }
+            
             JOptionPane.showMessageDialog(frame, "Some of your Answers are incorrect!"
                 + "\nHit Submit Again to continue without Fixing.\n"
                 + "Otherwise make your corrections",

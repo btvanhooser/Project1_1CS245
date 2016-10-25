@@ -64,7 +64,6 @@ public class SudokuPane extends JPanel {
         pane.setFont(new Font("Arial Black", Font.PLAIN, 20));
     }
     
-    
     public void initKeyListener() {
         keyListener = new KeyListener() {
             @Override
@@ -73,6 +72,9 @@ public class SudokuPane extends JPanel {
                 
                 pane.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, null);
                 pane.setFocusTraversalKeys(KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS, null);
+                
+                if (ke.getExtendedKeyCode() == 0) {
+                }
                 
                 if(pane.getText().length()>=1) {  
                     ke.consume();
