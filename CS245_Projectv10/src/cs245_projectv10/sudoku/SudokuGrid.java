@@ -1,6 +1,8 @@
 /***************************************************************
 * file: SudokuGrid.java
 * @author: Brian Van Hooser
+* @author: Andrew Olaveson
+* @author: Melanie Giusti
 * class: CS 245.01 – Programming Graphical User Interfaces
 *
 * date last modified: 10/23/2016
@@ -13,15 +15,13 @@ package cs245_projectv10.sudoku;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import cs245_projectv10.Globals;
-import javax.swing.JTextArea;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import javax.swing.JTextPane;
 
 /**
@@ -37,11 +37,9 @@ public class SudokuGrid extends JPanel {
     //Purpose: Constructor
     public SudokuGrid() {
         super(new GridBagLayout());
-        
+        innerGrid = new SudokuGridInner[3][3];
         alreadySubmitted = false;
         
-        innerGrid = new SudokuGridInner[3][3];
-
         GridBagConstraints c = new GridBagConstraints();
         /** construct the grid */
         for (int i=0; i<3; i++) {
@@ -59,7 +57,6 @@ public class SudokuGrid extends JPanel {
 
         /** create a black border */ 
         setBorder(BorderFactory.createLineBorder(Color.black)); 
-
         setUpLabels();
     }
     
@@ -69,48 +66,21 @@ public class SudokuGrid extends JPanel {
     public void setUpLabels(){
         for (int i = 0; i < 9; i++){
             for (int j = 0; j < 9; j++){
-                JTextPane temp = innerGrid[i/3][j/3].getLabelOfPanel(i, j);
+                JTextPane temp = innerGrid[i/3][j/3].getTextPane(i, j);
                 temp.setToolTipText("Click this square to edit the value in Column " + (i+1) + " and Row " + (j+1));
                 if (Globals.EDITABLE_SUDOKU_SQUARES[j][i]) {
-                    temp.addMouseListener(new MouseListener(){
+                    temp.addFocusListener(new FocusListener() {
                         @Override
-                        public void mouseClicked(MouseEvent e) {
+                        public void focusGained(FocusEvent e) {
                             temp.setBorder(BorderFactory.createLineBorder(Color.BLUE));
-//                            String[] options = {"Clear","1","2","3","4","5","6","7","8","9"};
-//                            JFrame frame = new JFrame();
-//                            String input = (String)JOptionPane.showInputDialog(frame,
-//                                    "What number would you like to input?",
-//                                    "Number input",
-//                                    JOptionPane.PLAIN_MESSAGE,
-//                                    null,
-//                                    options,
-//                                    options[0]);
-//                            if (input == null){}
-//                            else if (input.length() != 1){
-//                                temp.setText("");
-//                            }
-//                            else {
-//                                temp.setText(input);
-//                            }
-                            temp.setForeground(Color.BLUE);
-//                            temp.setBorder(null);
                         }
 
                         @Override
-                        public void mousePressed(MouseEvent e) {}
-
-                        @Override
-                        public void mouseReleased(MouseEvent e) {}
-
-                        @Override
-                        public void mouseEntered(MouseEvent e) {}
-
-                        @Override
-                        public void mouseExited(MouseEvent e) {}
-
+                        public void focusLost(FocusEvent e) {
+                            temp.setBorder(null);
+                        }
                     });
-                }
-                else { 
+                } else { 
                     temp.setText(Globals.INITIAL_BOARD_FOR_SUDOKU[j][i]);
                     temp.setEditable(false);
                 }
@@ -124,7 +94,7 @@ public class SudokuGrid extends JPanel {
         String[][] grid = new String[9][9];
         for (int i = 0; i < 9; i++){
             for (int j = 0; j < 9; j++){
-                grid[j][i] = innerGrid[i/3][j/3].getLabelOfPanel(i, j).getText();
+                grid[j][i] = innerGrid[i/3][j/3].getTextPane(i, j).getText();
             }
         }
         return grid;
@@ -135,7 +105,7 @@ public class SudokuGrid extends JPanel {
     public boolean checkForBlanks(){
         for (int i = 0; i < 9; i++){
             for (int j = 0; j < 9; j++){
-                if (innerGrid[i/3][j/3].getLabelOfPanel(i, j).getText().length() == 0) return true;
+                if (innerGrid[i/3][j/3].getTextPane(i, j).getText().length() == 0) return true;
             }
         }
         return false;
@@ -145,28 +115,38 @@ public class SudokuGrid extends JPanel {
     //purpose: checks all conditions on the grid to see if a win 
     //scenario has been met or not.
     public boolean checkWin(){
-        if (checkForBlanks()){
-            JFrame frame = new JFrame();
-            JOptionPane.showMessageDialog(frame, "Not all squares are filled!", "Warning", JOptionPane.WARNING_MESSAGE);
-            return false;
-        }
-        
-        String[][] currentState = getCurrentState();
         int wrongAnswers = 0;
-        
+        String[][] currentState;
+        JFrame frame = new JFrame();
+
+        currentState = getCurrentState();
         for (int i = 0; i < 9; i++){
             for (int j = 0; j < 9; j++){
                 if (!currentState[i][j].equals(Globals.WIN_STATE_FOR_SUDOKU[i][j])){
                     wrongAnswers++;
-                    innerGrid[j/3][i/3].getLabelOfPanel(j,i).setBorder(BorderFactory.createLineBorder(Color.red));
+                    innerGrid[j/3][i/3].getTextPane(j,i).setBorder(BorderFactory.createLineBorder(Color.red));
+                } else if (Globals.EDITABLE_SUDOKU_SQUARES[i][j]) {
+                    innerGrid[j/3][i/3].getTextPane(j,i).setForeground(Color.BLUE);
+                    innerGrid[j/3][i/3].getTextPane(j,i).setEditable(false);
                 }
             }
         }
-        if (!alreadySubmitted){
-            Globals.SUDOKU_GAME_SCORE -= (wrongAnswers*10);
-            alreadySubmitted = true;
+        
+        Globals.SUDOKU_GAME_SCORE = 540;
+        Globals.SUDOKU_GAME_SCORE -= (wrongAnswers*10);
+        if (Globals.SUDOKU_GAME_SCORE < 0) {       
+            Globals.SUDOKU_GAME_SCORE = 0;
         }
-        return (!(wrongAnswers > 0));
+
+        if (!alreadySubmitted) {
+            JOptionPane.showMessageDialog(frame, "Some of your Answers are incorrect!"
+                + "\nHit Submit Again to continue without Fixing.\n"
+                + "Otherwise make your corrections",
+                "Warning", JOptionPane.WARNING_MESSAGE);
+            alreadySubmitted = true;
+            return false;
+        } else {
+            return true;
+        }
     }
-    
 }

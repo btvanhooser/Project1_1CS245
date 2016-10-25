@@ -14,25 +14,19 @@ import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.BorderFactory;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 
-/**
- *
- * @author Brian
- */
 public class SudokuGridInner extends JPanel {
 
-    private SudokuPane[][] panelList;
+    private SudokuPane[][] paneList;
     
     //SudokuGridInner
     //purpose: constructor
     public SudokuGridInner() {
         super(new GridBagLayout());
         
-        panelList = new SudokuPane[3][3];
+        paneList = new SudokuPane[3][3];
 
         GridBagConstraints c = new GridBagConstraints();
         /** construct the grid */
@@ -44,7 +38,7 @@ public class SudokuGridInner extends JPanel {
                 c.gridx = i;
                 c.gridy = j;
                 SudokuPane temp = new SudokuPane();
-                panelList[i][j] = temp;
+                paneList[i][j] = temp;
                 add(temp, c);
             }
         }
@@ -56,6 +50,6 @@ public class SudokuGridInner extends JPanel {
 
     //getLabelOfPanel
     //helper method to retrieve the label of a panel in the panelList array.
-    public JTextPane getLabelOfPanel(int a, int b) { return panelList[a%3][b%3].getLabel();}
+    public JTextPane getTextPane(int a, int b) { return paneList[a%3][b%3].getPane();}
     
 }

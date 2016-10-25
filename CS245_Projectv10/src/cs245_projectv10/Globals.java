@@ -14,10 +14,6 @@ package cs245_projectv10;
 import java.awt.Color;
 import java.io.File;
 
-/**
- *
- * @author andrew, brian
- */
 public class Globals {
     public static final File   HIGH_SCORES_FILE   = new File("src//cs245_projectv10//resources//highscores.txt");
     public static final Color  BUTTON_COLOR       = new Color(204, 204, 204);
@@ -45,7 +41,9 @@ public class Globals {
                                                "LOSER","Try Harder",
                                                "Lives Are At Stake Here!",
                                                "You MONSTER!" };
+    
     public static final String COLOR_LIST[] = {"Red", "Yellow", "Green", "Blue", "Purple"};
+    
     public static final String COLOR_LIST_RGB[] = {"java.awt.Color[r=255,g=0,b=0]"/*Red*/,
                                                "java.awt.Color[r=255,g=255,b=0]"/*Yellow*/,
                                                "java.awt.Color[r=0,g=255,b=0]"/*Green*/, 

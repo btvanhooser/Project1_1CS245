@@ -20,7 +20,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 public class SplashScreen extends JFrame {
-    
+    /* --- Variables --- */
     private JPanel mainPanel;
     
     public SplashScreen(){
@@ -41,7 +41,6 @@ public class SplashScreen extends JFrame {
     
     /*Adds components to main content panel*/
     private void setMainPanelAttributes(){
-        
         mainPanel = new JPanel();
         mainPanel.setLayout(new GridLayout(5,1,2,2));
         

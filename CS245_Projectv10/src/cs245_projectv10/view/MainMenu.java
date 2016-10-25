@@ -28,7 +28,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class MainMenu extends JPanel {
-    
     /* --- Variables --- */
     private GameScreen game;
     private JButton    playButton;

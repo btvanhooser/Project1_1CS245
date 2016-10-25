@@ -76,12 +76,10 @@ public class EndScreen  extends JPanel {
         }
 
         @Override
-        public void keyPressed(KeyEvent ke) {
-        }
+        public void keyPressed(KeyEvent ke) { }
 
         @Override
-        public void keyReleased(KeyEvent ke) {
-        }
+        public void keyReleased(KeyEvent ke) { }
     };
     
     /*Set the visual properties of the EndScreen*/

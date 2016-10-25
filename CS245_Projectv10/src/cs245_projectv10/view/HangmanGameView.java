@@ -55,7 +55,6 @@ public class HangmanGameView extends JPanel {
     private JTextArea manBuffer;
     private JLabel headerLabel;
     private JLabel clockTextArea;
-    
     private String [] hangmanParts;
     private LinkedList <JLabel> currentWordList;
     private String currentWord;

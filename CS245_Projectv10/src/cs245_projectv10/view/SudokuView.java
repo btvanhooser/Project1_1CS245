@@ -50,6 +50,8 @@ public class SudokuView extends JPanel {
         createButtonsPanel();
         addActionListeners();
         addPanelsToMainPanel();
+        
+        updateScore();
     }
     
     public void addPanelsToMainPanel(){
@@ -64,7 +66,7 @@ public class SudokuView extends JPanel {
         
         headerLabel = new JLabel("SUDOKU");
         headerLabel.setToolTipText("Current game");
-        scoreLabel = new JLabel(" ");
+        scoreLabel = new JLabel(" Score: ---");
         dateFormat = new SimpleDateFormat("MM/dd/yyy HH:mm:ss");
         clockTextArea = new JLabel(dateFormat.format(new Date()));
         clockTextArea.setToolTipText("Current date and time");
@@ -86,7 +88,7 @@ public class SudokuView extends JPanel {
         buttonsPanel = new JPanel();
         
         buttonsPanel.setBackground(Color.WHITE);
-        buttonsPanel.setLayout(new GridLayout(1,0,50,50));
+        buttonsPanel.setLayout(new GridLayout(1,0));
         
         quitButton   = new JButton("Quit");
         quitButton.setBackground(Globals.BUTTON_COLOR);
@@ -109,13 +111,18 @@ public class SudokuView extends JPanel {
                     EndScreen endScreen = new EndScreen(game);
                     game.swapPanel(endScreen);
                 }
+                updateScore();
         });
         
         quitButton.addActionListener((ActionEvent e) -> {
-                EndScreen endScreen = new EndScreen(game);
                 Globals.SUDOKU_GAME_SCORE = 0;
+                EndScreen endScreen = new EndScreen(game);
                 game.swapPanel(endScreen);
         });
+    }
+    
+    private void updateScore() {
+        scoreLabel.setText(" Score: "+ Integer.toString(Globals.SUDOKU_GAME_SCORE));
     }
     
     // Clock which will update on 1000ms intervals to show the current time.
@@ -125,5 +132,4 @@ public class SudokuView extends JPanel {
         });
         timer.start();
     }
-    
 }

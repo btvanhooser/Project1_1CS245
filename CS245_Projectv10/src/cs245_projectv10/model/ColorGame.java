@@ -14,8 +14,6 @@ import cs245_projectv10.controller.Keyboard;
 import cs245_projectv10.screens.GameScreen;
 import cs245_projectv10.view.ColorGameView;
 import cs245_projectv10.Globals;
-import cs245_projectv10.screens.EndScreen;
-import cs245_projectv10.sudoku.*;
 import cs245_projectv10.view.SudokuView;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -107,20 +105,16 @@ public class ColorGame {
         
         SudokuView view = new SudokuView(game);
         game.swapPanel(view);
-        //new EndScreen(game);
-//        view.dispose();
+        game.validate();
     }
     
     private void addActionListenersToControllerButtons() {
         // Add action listeners to virtual keyboard
         for (JButton button : colorList) {
-            
             Color originalColor = button.getBackground();
-            
             // Need to explicitly define hover behavior because of fix for 
             // displaying button color for Mac OS (in Keyboard.java)
             button.addMouseListener(new java.awt.event.MouseAdapter(){
-                
                 // Highlight button while hovering 
                 @Override
                 public void mouseEntered(java.awt.event.MouseEvent evt){
@@ -132,7 +126,6 @@ public class ColorGame {
                 public void mouseExited(java.awt.event.MouseEvent evt){
                     button.setBackground(originalColor);
                 }
-            
             });
             
             button.addActionListener((ActionEvent e) -> {
@@ -142,7 +135,6 @@ public class ColorGame {
                 userColorPicked = button.getBackground().toString();
                 update();
             });
-            
         }
     }
 }

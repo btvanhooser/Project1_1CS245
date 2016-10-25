@@ -1,6 +1,8 @@
 /***************************************************************
-* file: SudokuPanel.java
+* file: SudokuPane.java
 * @author: Brian Van Hooser
+* @author: Andrew Olaveson
+* @author: Melanie Giusti
 * class: CS 245.01 – Programming Graphical User Interfaces
 *
 * date last modified: 10/23/2016
@@ -30,57 +32,65 @@ import javax.swing.text.StyledDocument;
 public class SudokuPane extends JPanel {
 
     JTextPane pane;
-    StyledDocument document;
     KeyListener keyListener;
+    Pattern regex;
     
     //SudokuPanel
     //purpose: constructor
     public SudokuPane() {
-        super();
+        setAttributes();
+        initTextPane();
+        initKeyListener();
+        add(pane, BorderLayout.CENTER);
+    }
+    
+    public void setAttributes() {
         setLayout(new BorderLayout());
-        setTextPaneAttributes();
+        /** create a black border */
+        setBorder(BorderFactory.createLineBorder(Color.black));
+        /** set size to 30x30 pixel for one square */
+        setPreferredSize(new Dimension(30,30));
         
+        regex = Pattern.compile("[1-9]");
+    }
+    
+    public void initTextPane() {
+        StyleContext context = new StyleContext();
+        Style style = context.getStyle(StyleContext.DEFAULT_STYLE);
+        StyleConstants.setAlignment(style, StyleConstants.ALIGN_CENTER);
+        StyledDocument document = new DefaultStyledDocument(context);
         pane = new JTextPane(document);
         pane.setFont(new Font("Arial Black", Font.PLAIN, 20));
-        this.add(pane, BorderLayout.CENTER);
-        
-        keyListener = new KeyListener(){
+    }
+    
+    
+    public void initKeyListener() {
+        keyListener = new KeyListener() {
             @Override
             public void keyTyped(KeyEvent ke) {
+                boolean Digit = regex.matcher(""+ke.getKeyChar()).matches();
                 if(pane.getText().length()>=1) {  
                     ke.consume();
+                } else if(!Digit) {
+                    pane.setBorder(BorderFactory.createLineBorder(Color.red));
+                    ke.consume();
+                } else {
+                    pane.setBorder(null);
                 }
             }
 
             @Override
-            public void keyPressed(KeyEvent ke) {
-            }
+            public void keyPressed(KeyEvent ke) { }
 
             @Override
-            public void keyReleased(KeyEvent ke) {
-            }
+            public void keyReleased(KeyEvent ke) { }
         };
         
         pane.addKeyListener(keyListener);
-        /** create a black border */
-        setBorder(BorderFactory.createLineBorder(Color.black));
-        /** set size to 30x30 pixel for one square */
-        this.setPreferredSize(new Dimension(30,30));
-    }
-    
-
-    
-    
-    public void setTextPaneAttributes() {
-        setLayout(new BorderLayout());
-        StyleContext context = new StyleContext();
-        Style style = context.getStyle(StyleContext.DEFAULT_STYLE);
-        StyleConstants.setAlignment(style, StyleConstants.ALIGN_CENTER);
-        document = new DefaultStyledDocument(context);
     }
     
     //getLabel
     //purpose: getter method for the label of this SudokuPanel
-    public JTextPane getLabel() {return this.pane;}
+    public JTextPane getPane() {return pane;}
     
 }

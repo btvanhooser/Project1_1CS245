@@ -19,18 +19,13 @@ import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 
 public class Hangman {
-
-    /*Constants*/
-
-    
-    /*Variables*/
+    /* --- Variables --- */
     GameScreen             game;
     HangmanGameView        view;
     Keyboard               controller;
     private  String        guessWord;
     private  StringBuilder wordState;
     private  int           wrongGuesses;
-//    private  int           score;
     
     /* Model constructor*/
     public Hangman(HangmanGameView view, Keyboard controller, GameScreen game) {
@@ -40,7 +35,6 @@ public class Hangman {
         addActionListenersToControllerButtons();
         
         // Set initial game state
-//        score        = Globals.MAX_SCORE;
         wrongGuesses = 0;
         guessWord    = getRandomWord(Globals.WORD_LIST);
         wordState    = new StringBuilder(guessWord.length());
@@ -90,7 +84,6 @@ public class Hangman {
     private void checkWin(){
         if(wrongGuesses >= Globals.MAX_TRYS){
             view.endHangman(guessWord, wrongGuesses, getRandomWord(Globals.LOSE_LIST));
-//            endGame(score);
         } else if(!wordState.toString().contains("_")) {
             view.endHangman(guessWord, wrongGuesses, getRandomWord(Globals.WIN_LIST));
         }

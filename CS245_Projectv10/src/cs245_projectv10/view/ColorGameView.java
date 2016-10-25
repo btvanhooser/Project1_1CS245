@@ -21,14 +21,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
 
 public class ColorGameView extends JPanel {
-    
+    /* --- Variables --- */
     private JPanel     mainPanel;
     private JPanel     headerPanel;
     private JLabel     headerLabel;
@@ -42,7 +41,6 @@ public class ColorGameView extends JPanel {
     private JButton    colorButton5;
     private DateFormat dateFormat;
     private Timer      timer;
-    
     int [] buttonCoordinates;
     Keyboard controller;
     
@@ -85,7 +83,6 @@ public class ColorGameView extends JPanel {
         clockTextArea = new JLabel(dateFormat.format(new Date()));
         clockTextArea.setToolTipText("Current date and time");
     }
-    
     
     private void addPanels() {
         headerPanel = new JPanel();
@@ -149,7 +146,5 @@ public class ColorGameView extends JPanel {
         mainPanel.add(colorButton3);
         mainPanel.add(colorButton4);
         mainPanel.add(colorButton5);
-        
     }
-    
 }

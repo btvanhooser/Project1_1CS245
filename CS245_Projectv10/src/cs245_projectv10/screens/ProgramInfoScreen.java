@@ -15,7 +15,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
 import java.util.LinkedList;
 import javax.swing.AbstractAction;
 import javax.swing.JFrame;
@@ -23,7 +22,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 import javax.swing.Action;
-import javax.swing.JComponent;
 import static javax.swing.SwingConstants.CENTER;
 
 

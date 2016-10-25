@@ -12,7 +12,6 @@
 package cs245_projectv10.screens;
 
 import cs245_projectv10.Globals;
-import cs245_projectv10.view.MainMenu;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
