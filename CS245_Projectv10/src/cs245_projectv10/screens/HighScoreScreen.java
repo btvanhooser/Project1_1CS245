@@ -18,30 +18,23 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import java.io.*;
 
-/*TODO: Add functionality and remove dummy placeholder scores*/
-// Done
-public class HighScoreScreen extends JFrame {
-    
-    /*TODO: Replace with actual scores from file
-     * Done as labels are created
-     *private final String DUMMY_SCORES [] = {"AAA...1000","BBB...900","CCC...800",
-     *                                       "DDD...700","EEE...600"};
-     */
-    
-    private MainMenu mainMenu;
+
+public class HighScoreScreen extends JPanel {
+  
+    /* --- Variables --- */
+    private GameScreen game;
     private JButton  backButton;
     private JPanel   centerPanel;
     private JPanel   footerPanel;
     
     /*Constructs all elements for highscore screen and displays the screen*/
-    public HighScoreScreen(MainMenu mainMenu) {
-        this.mainMenu = mainMenu;
+    public HighScoreScreen(GameScreen game) {
+        this.game = game;
         
         setFrameAttributes();
         /*A try catch block is used to handle an exception thrown if an error
@@ -60,12 +53,7 @@ public class HighScoreScreen extends JFrame {
     /*Sets the attributes of the main frame*/
     private void setFrameAttributes(){
         setLayout(new BorderLayout());
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(600,400);
-        setLocationRelativeTo(null);
-        setVisible(true);
-        setOpacity(1);
-        getContentPane().setBackground(Color.WHITE);
+        setBackground(Color.WHITE);
     }
     
     /*Creates center panel and brings in high scores from text file*/
@@ -112,8 +100,7 @@ public class HighScoreScreen extends JFrame {
     /*Adds action listener to "back" button*/
     private void addActionListeners(){
         backButton.addActionListener((ActionEvent e)->{
-            mainMenu.setVisible(true);
-            dispose();
+            game.backToMainMenu();
         });
     }
 }

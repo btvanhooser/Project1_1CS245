@@ -27,7 +27,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 
-public class ColorGameView extends JFrame {
+public class ColorGameView extends JPanel {
     
     private JPanel     mainPanel;
     private JPanel     headerPanel;
@@ -67,16 +67,13 @@ public class ColorGameView extends JFrame {
     
     private void setFrameAttributes() {
         setLayout(new BorderLayout());
-        pack();
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(600,400);
-        setLocationRelativeTo(null);
-        setVisible(true);
+        setBackground(Color.WHITE);
     }
     
     private void createMainPanel(){
         mainPanel = new JPanel();
         mainPanel.setLayout(null);
+        mainPanel.setBackground(Color.WHITE);
     }
     
     private void createHeaderPanelItems() {

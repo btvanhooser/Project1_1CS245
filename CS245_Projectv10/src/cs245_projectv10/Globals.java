@@ -29,6 +29,11 @@ public class Globals {
     public static int          COLOR_GAME_SCORE   = 0;
     public static int          SUDOKU_GAME_SCORE  = 540;
     
+    public static final String [] TEAM_MEMBERS = {"Alfredo Ceballos, 010270728",
+                                            "Andrew Olaveson, 010481549",
+                                            "Brian Van Hooser, 009344504",
+                                            "Melanie Giusti, 010829117"};
+    
     public static final String WORD_LIST [] = {"ABSTRACT","CEMETERY","NURSE",
                                                "PHARMACY","CLIMBING"};
     

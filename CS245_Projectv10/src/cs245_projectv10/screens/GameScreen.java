@@ -9,10 +9,15 @@
 ****************************************************************/
 package cs245_projectv10.screens;
 
-import cs245_projectv10.controller.Keyboard;
-import cs245_projectv10.model.Hangman;
-import cs245_projectv10.view.HangmanGameView;
+import cs245_projectv10.view.MainMenu;
+import javax.swing.Action;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import javax.swing.AbstractAction;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.KeyStroke;
 
 
 /**
@@ -21,25 +26,57 @@ import javax.swing.JFrame;
  *  (this) to the model which drives the View while utilizing the controller
  */
 public class GameScreen  extends JFrame {
-    /* Variables */
-    HangmanGameView view;
-    Hangman  model;
-    Keyboard controller;
+    /* --- Constants -- */
+    private final MainMenu mainMenu;
     
+    /* --- Variables --- */
+    ProgramInfoScreen infoScreen;
     
     public GameScreen() {
-        controller = new Keyboard();
-        view = new HangmanGameView(controller);
-        model = new Hangman(view, controller, this);
-        
+        mainMenu = new MainMenu(this);
+        infoScreen = new ProgramInfoScreen();
         setFrameAttributes();
+        createKeyBindings();
     }
     
     private void setFrameAttributes() {
-        add(view);
+        add(mainMenu);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600,400);
         setLocationRelativeTo(null);
         setVisible(true);
+        setOpacity(1);
+        setBackground(Color.WHITE);
+    }
+    
+    public void swapPanel(JPanel panelToSwap){
+        getContentPane().removeAll();
+        add(panelToSwap);
+        validate();
+    } 
+    
+    public void backToMainMenu() {
+        swapPanel(mainMenu);
+        repaint();
+    }
+    
+    public void createKeyBindings(){
+        Action F1Action = new AbstractAction(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                infoScreen.setVisible(true);
+            }
+        };
+        
+        Action EscAction = new AbstractAction(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        };
+        getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("F1"),"F1");
+        getRootPane().getActionMap().put("F1",F1Action);
+        getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("ESCAPE"),"Esc");
+        getRootPane().getActionMap().put("Esc",EscAction);
     }
 }

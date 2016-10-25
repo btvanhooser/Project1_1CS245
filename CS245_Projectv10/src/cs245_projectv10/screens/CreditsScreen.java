@@ -14,43 +14,35 @@
 package cs245_projectv10.screens;
 
 import cs245_projectv10.Globals;
-import cs245_projectv10.view.MainMenu;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.util.LinkedList;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import static javax.swing.SwingConstants.*;
 
-/**
- *
- * @author andrew
- */
-public class CreditsScreen extends JFrame {
+public class CreditsScreen extends JPanel {
     
     /* --- Constants ---*/
-    private final MainMenu mainMenu;
-    private final String [] names = {"Alfredo Ceballos, 010270728",
-                                     "Andrew Olaveson, 010481549",
-                                     "Brian Van Hooser, 009344504",
-                                     "Melanie Giusti, 010829117"};
+    private final GameScreen game;
+    
+    /* --- Variables --- */
     private LinkedList<JLabel> nameLabels;
     private JPanel creditsPanel;
     private JPanel backButtonPanel;
     private JLabel creditsLabel;
     private JButton backButton;
     
-    public CreditsScreen(MainMenu mainMenu) {
-        this.mainMenu = mainMenu;
+    
+    public CreditsScreen(GameScreen game) {
+        this.game = game;
         setFrameAttributes();
         addActionListenerToButton();
         addComponentsToFrame();
     }
-    
     
     /* --- Helper Methods --- */
     
@@ -60,10 +52,6 @@ public class CreditsScreen extends JFrame {
         backButton.setToolTipText("Return to main menu n00b");
         setLayout(new BorderLayout());
         setBackground(Color.WHITE);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(600,400);
-        setLocationRelativeTo(null);
-        setVisible(true);
     }
     
     private void addComponentsToFrame() {
@@ -74,11 +62,11 @@ public class CreditsScreen extends JFrame {
         backButtonPanel = new JPanel(new BorderLayout());
         
         creditsPanel.add(creditsLabel);
-        for (int ii = 0; ii < names.length; ++ii) {
-            JLabel temp = new JLabel(names[ii],CENTER);
-            temp.setToolTipText(names[ii]);
+        for (int ii = 0; ii < Globals.TEAM_MEMBERS.length; ++ii) {
+            JLabel temp = new JLabel(Globals.TEAM_MEMBERS[ii],CENTER);
+            temp.setToolTipText(Globals.TEAM_MEMBERS[ii]);
             nameLabels.add(temp);
-            nameLabels.get(ii).setText(names[ii]);
+            nameLabels.get(ii).setText(Globals.TEAM_MEMBERS[ii]);
             creditsPanel.add(nameLabels.get(ii));
         }
         
@@ -93,9 +81,7 @@ public class CreditsScreen extends JFrame {
     
     private void addActionListenerToButton() {
         backButton.addActionListener((ActionEvent e)-> {
-            mainMenu.setVisible(true);
-            dispose();
+            game.backToMainMenu();
         });
     }
-    
 }

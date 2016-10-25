@@ -10,8 +10,6 @@
 ****************************************************************/
 package cs245_projectv10;
 
-import java.util.Comparator;
-
 public class HighScoreEntry implements Comparable <HighScoreEntry>{
     
     private String name;

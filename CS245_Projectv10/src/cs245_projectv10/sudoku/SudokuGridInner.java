@@ -8,7 +8,7 @@
 * three classes instead of two to provide a better look to the 
 * board.
 ****************************************************************/
-package customComponents;
+package cs245_projectv10.sudoku;
 
 import java.awt.Color;
 import java.awt.GridBagConstraints;
@@ -16,21 +16,23 @@ import java.awt.GridBagLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextPane;
 
 /**
  *
  * @author Brian
  */
-class SudokuGridInner extends JPanel {
+public class SudokuGridInner extends JPanel {
 
-    private SudokuPanel[][] panelList;
+    private SudokuPane[][] panelList;
     
     //SudokuGridInner
     //purpose: constructor
     public SudokuGridInner() {
         super(new GridBagLayout());
         
-        panelList = new SudokuPanel[3][3];
+        panelList = new SudokuPane[3][3];
 
         GridBagConstraints c = new GridBagConstraints();
         /** construct the grid */
@@ -41,7 +43,7 @@ class SudokuGridInner extends JPanel {
                 c.fill = GridBagConstraints.BOTH;
                 c.gridx = i;
                 c.gridy = j;
-                SudokuPanel temp = new SudokuPanel();
+                SudokuPane temp = new SudokuPane();
                 panelList[i][j] = temp;
                 add(temp, c);
             }
@@ -54,6 +56,6 @@ class SudokuGridInner extends JPanel {
 
     //getLabelOfPanel
     //helper method to retrieve the label of a panel in the panelList array.
-    public JLabel getLabelOfPanel(int a, int b) { return panelList[a%3][b%3].getLabel();}
+    public JTextPane getLabelOfPanel(int a, int b) { return panelList[a%3][b%3].getLabel();}
     
 }

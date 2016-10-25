@@ -13,6 +13,8 @@
 package cs245_projectv10.view;
 
 import cs245_projectv10.Globals;
+import cs245_projectv10.controller.Keyboard;
+import cs245_projectv10.model.Hangman;
 import cs245_projectv10.screens.CreditsScreen;
 import cs245_projectv10.screens.GameScreen;
 import cs245_projectv10.screens.HighScoreScreen;
@@ -22,25 +24,23 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-/**
- *
- */
-public class MainMenu extends JFrame {
+public class MainMenu extends JPanel {
     
-    /* --- --- */
-    private JButton playButton;
-    private JButton highScoresButton;
-    private JButton creditsButton;
-    private JPanel  logoPanel;
-    private JPanel  centerPanel;
-    private JPanel  buttonPanel;
+    /* --- Variables --- */
+    private GameScreen game;
+    private JButton    playButton;
+    private JButton    highScoresButton;
+    private JButton    creditsButton;
+    private JPanel     logoPanel;
+    private JPanel     centerPanel;
+    private JPanel     buttonPanel;
     
-    public MainMenu() {
-        setFrameAttributes();
+    public MainMenu(GameScreen game) {
+        this.game = game;
+        setPanelAttributes();
         createLogoPanel();
         createCenterPanel();
         addComponentsToFrame();
@@ -50,13 +50,8 @@ public class MainMenu extends JFrame {
     
     /* --- Helper Methods --- */
     
-    private void setFrameAttributes() {
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(600,400);
-        setLocationRelativeTo(null);
-        setVisible(true);
-        setOpacity(1);
-        getContentPane().setBackground(Color.WHITE);
+    private void setPanelAttributes() {
+        setBackground(Color.WHITE);
         setLayout(new BorderLayout(20,20));
     }
     
@@ -107,18 +102,21 @@ public class MainMenu extends JFrame {
     
     private void addActionListeners() {
         playButton.addActionListener((ActionEvent e)->{
-            GameScreen game = new GameScreen();
-            dispose();
+            Keyboard controller  = new Keyboard();
+            HangmanGameView view = new HangmanGameView(controller);
+            Hangman model        = new Hangman(view, controller, game);
+            
+            game.swapPanel(view); // Swaps current panel out for a new panel
         });
         
         highScoresButton.addActionListener((ActionEvent e)->{
-            HighScoreScreen highScores = new HighScoreScreen(this);
-            setVisible(false);
+            HighScoreScreen highScores = new HighScoreScreen(game);
+            game.swapPanel(highScores);
         });
         
         creditsButton.addActionListener((ActionEvent e)->{
-            CreditsScreen credits = new CreditsScreen(this);
-            setVisible(false);
+            CreditsScreen credits = new CreditsScreen(game);
+            game.swapPanel(credits);
         });
     }
 }

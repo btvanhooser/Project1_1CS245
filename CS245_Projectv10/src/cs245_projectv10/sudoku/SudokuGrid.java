@@ -8,7 +8,7 @@
 * squares with data. This also contains the methods to check for 
 * game completion status.
 ****************************************************************/
-package customComponents;
+package cs245_projectv10.sudoku;
 
 import java.awt.Color;
 import java.awt.GridBagConstraints;
@@ -21,12 +21,14 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import cs245_projectv10.Globals;
+import javax.swing.JTextArea;
+import javax.swing.JTextPane;
 
 /**
  *
  * @author Brian
  */
-class SudokuGrid extends JPanel {
+public class SudokuGrid extends JPanel {
 
     private SudokuGridInner[][] innerGrid;
     private boolean alreadySubmitted;
@@ -67,31 +69,31 @@ class SudokuGrid extends JPanel {
     public void setUpLabels(){
         for (int i = 0; i < 9; i++){
             for (int j = 0; j < 9; j++){
-                JLabel temp = innerGrid[i/3][j/3].getLabelOfPanel(i, j);
+                JTextPane temp = innerGrid[i/3][j/3].getLabelOfPanel(i, j);
                 temp.setToolTipText("Click this square to edit the value in Column " + (i+1) + " and Row " + (j+1));
-                if (Globals.EDITABLE_SUDOKU_SQUARES[j][i]){
+                if (Globals.EDITABLE_SUDOKU_SQUARES[j][i]) {
                     temp.addMouseListener(new MouseListener(){
                         @Override
                         public void mouseClicked(MouseEvent e) {
-                            temp.setBorder(BorderFactory.createLineBorder(Color.blue));
-                            String[] options = {"Clear","1","2","3","4","5","6","7","8","9"};
-                            JFrame frame = new JFrame();
-                            String input = (String)JOptionPane.showInputDialog(frame,
-                                    "What number would you like to input?",
-                                    "Number input",
-                                    JOptionPane.PLAIN_MESSAGE,
-                                    null,
-                                    options,
-                                    options[0]);
-                            if (input == null){}
-                            else if (input.length() != 1){
-                                temp.setText("");
-                            }
-                            else {
-                                temp.setText(input);
-                            }
-                            temp.setForeground(Color.blue);
-                            temp.setBorder(null);
+                            temp.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+//                            String[] options = {"Clear","1","2","3","4","5","6","7","8","9"};
+//                            JFrame frame = new JFrame();
+//                            String input = (String)JOptionPane.showInputDialog(frame,
+//                                    "What number would you like to input?",
+//                                    "Number input",
+//                                    JOptionPane.PLAIN_MESSAGE,
+//                                    null,
+//                                    options,
+//                                    options[0]);
+//                            if (input == null){}
+//                            else if (input.length() != 1){
+//                                temp.setText("");
+//                            }
+//                            else {
+//                                temp.setText(input);
+//                            }
+                            temp.setForeground(Color.BLUE);
+//                            temp.setBorder(null);
                         }
 
                         @Override
@@ -110,6 +112,7 @@ class SudokuGrid extends JPanel {
                 }
                 else { 
                     temp.setText(Globals.INITIAL_BOARD_FOR_SUDOKU[j][i]);
+                    temp.setEditable(false);
                 }
             }
         }

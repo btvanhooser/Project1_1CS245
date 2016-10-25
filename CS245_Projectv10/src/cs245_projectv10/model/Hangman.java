@@ -81,8 +81,9 @@ public class Hangman {
     /*Ends game and goes to "End Game" screen*/
     private void endGame(){
         ColorGameView colorGameView  = new ColorGameView(controller);
-        ColorGame     colorGameModel = new ColorGame(colorGameView,controller,game); 
-        game.dispose();
+        ColorGame     colorGameModel = new ColorGame(colorGameView,controller,game);
+        
+        game.swapPanel(colorGameView);
     }
     
     /*Checks for a win or loss*/

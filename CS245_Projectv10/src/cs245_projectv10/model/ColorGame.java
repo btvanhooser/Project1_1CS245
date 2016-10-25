@@ -15,6 +15,8 @@ import cs245_projectv10.screens.GameScreen;
 import cs245_projectv10.view.ColorGameView;
 import cs245_projectv10.Globals;
 import cs245_projectv10.screens.EndScreen;
+import cs245_projectv10.sudoku.*;
+import cs245_projectv10.view.SudokuView;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.util.Random;
@@ -22,8 +24,11 @@ import java.util.HashSet;
 import javax.swing.JLabel;
 import java.util.LinkedList;
 import javax.swing.JButton;
+
+
 public class ColorGame {
     
+    /* ---  CONSTANTS --- */
     private final int [][]coordinateArray = {
         {260,220,420,210, 60, 50,370, 50,220, 80},
         { 50,180, 20, 30,260, 90,170,220,480, 30},
@@ -36,8 +41,10 @@ public class ColorGame {
         {230, 20,450,220,190,210,340,170, 60,100},
         {160,200,430, 20, 90, 60,410,220,280, 70}
     };
+    
+    /* --- VARIABLES --- */
     private ColorGameView view;
-    GameScreen game;
+    private GameScreen game;
     private int iteration;
     private JLabel tempLabel;
     private Keyboard controller;
@@ -92,9 +99,16 @@ public class ColorGame {
             view.update(coordinateArray[coordinateChoice],tempLabel);
         }
         else {
-            new EndScreen(game);
-            view.dispose();
+            endGameAndContinue();
         }
+    }
+    
+    public void endGameAndContinue() {
+        
+        SudokuView view = new SudokuView(game);
+        game.swapPanel(view);
+        //new EndScreen(game);
+//        view.dispose();
     }
     
     private void addActionListenersToControllerButtons() {

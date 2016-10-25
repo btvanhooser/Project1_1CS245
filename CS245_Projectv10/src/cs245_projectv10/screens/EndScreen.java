@@ -11,7 +11,6 @@
 package cs245_projectv10.screens;
 
 import cs245_projectv10.Globals;
-import cs245_projectv10.view.MainMenu;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -25,15 +24,15 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-public class EndScreen  extends JFrame {
+public class EndScreen  extends JPanel {
     
     /* --- Variables --- */
+    private GameScreen game;
     private JPanel     endGamePanel;
     private JPanel     endGamePanelWithInput;
     private JPanel     endGameFooterPanel;
@@ -45,6 +44,7 @@ public class EndScreen  extends JFrame {
     private boolean  newHighScore;
     
     public EndScreen(GameScreen game) {
+        this.game = game;
         totalScore = Globals.HANGMAN_GAME_SCORE + Globals.COLOR_GAME_SCORE + Globals.SUDOKU_GAME_SCORE;
         checkForHighScore();
         
@@ -87,10 +87,7 @@ public class EndScreen  extends JFrame {
     /*Set the visual properties of the EndScreen*/
     private void setFrameAttributes() {
         setLayout(new BorderLayout());
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(600,400);
-        setLocationRelativeTo(null);
-        setVisible(true);
+        setBackground(Color.WHITE);
     }    
     
     /*Create Endgame Panel ontop of the Frame for no highscore*/
@@ -150,11 +147,7 @@ public class EndScreen  extends JFrame {
     /*End button creates new instance of main menu, resets the scores for ea
       game and stores highscore if achieved*/
     private void addActionListenersToEndButton() {
-        
         endGameButton.addActionListener((ActionEvent e) ->{
-            
-            MainMenu mainMenu = new MainMenu();
-            
             //Reset score for games
             Globals.HANGMAN_GAME_SCORE = 100;
             Globals.COLOR_GAME_SCORE = 0;
@@ -163,7 +156,7 @@ public class EndScreen  extends JFrame {
             //Store new high score
             if(newHighScore){writeHighScoresToFile();};
             
-            dispose();
+            game.backToMainMenu();
         });
         
         if(newHighScore){

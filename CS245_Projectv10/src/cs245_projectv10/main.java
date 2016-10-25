@@ -13,10 +13,9 @@
 ****************************************************************/
 package cs245_projectv10;
 
+import cs245_projectv10.screens.GameScreen;
 import cs245_projectv10.screens.SplashScreen;
-import cs245_projectv10.view.MainMenu;
 import java.awt.event.ActionEvent;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import javax.swing.SwingUtilities;
@@ -24,7 +23,7 @@ import javax.swing.Timer;
 
 public class main {
     
-    static MainMenu mainMenu;
+    static GameScreen gameScreen;
     // Method: main
     // Purpose: This is the starting point for this project.
     
@@ -35,7 +34,7 @@ public class main {
             
             Timer timer = new Timer(3000, (ActionEvent e) -> {
                 splash.dispose();
-                mainMenu = new MainMenu();
+                gameScreen = new GameScreen();
             });
             timer.setRepeats(false);
             timer.start();
