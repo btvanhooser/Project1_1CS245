@@ -73,9 +73,6 @@ public class SudokuPane extends JPanel {
                 pane.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, null);
                 pane.setFocusTraversalKeys(KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS, null);
                 
-                if (ke.getExtendedKeyCode() == 0) {
-                }
-                
                 if(pane.getText().length()>=1) {  
                     ke.consume();
                 } else if(!Digit) {
