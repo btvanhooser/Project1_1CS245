@@ -16,6 +16,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.KeyboardFocusManager;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.regex.Pattern;
@@ -68,7 +69,11 @@ public class SudokuPane extends JPanel {
         keyListener = new KeyListener() {
             @Override
             public void keyTyped(KeyEvent ke) {
-                boolean Digit = regex.matcher(""+ke.getKeyChar()).matches();
+                boolean Digit = regex.matcher(""+ ke.getKeyChar()).matches();
+                
+                pane.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, null);
+                pane.setFocusTraversalKeys(KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS, null);
+                
                 if(pane.getText().length()>=1) {  
                     ke.consume();
                 } else if(!Digit) {

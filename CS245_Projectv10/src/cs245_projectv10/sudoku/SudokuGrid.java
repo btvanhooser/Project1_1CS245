@@ -82,6 +82,7 @@ public class SudokuGrid extends JPanel {
                     });
                 } else { 
                     temp.setText(Globals.INITIAL_BOARD_FOR_SUDOKU[j][i]);
+                    temp.setBackground(Color.LIGHT_GRAY);
                     temp.setEditable(false);
                 }
             }
@@ -127,6 +128,7 @@ public class SudokuGrid extends JPanel {
                     innerGrid[j/3][i/3].getTextPane(j,i).setBorder(BorderFactory.createLineBorder(Color.red));
                 } else if (Globals.EDITABLE_SUDOKU_SQUARES[i][j]) {
                     innerGrid[j/3][i/3].getTextPane(j,i).setForeground(Color.BLUE);
+                    innerGrid[j/3][i/3].getTextPane(j,i).setBackground(Color.LIGHT_GRAY);
                     innerGrid[j/3][i/3].getTextPane(j,i).setEditable(false);
                 }
             }
